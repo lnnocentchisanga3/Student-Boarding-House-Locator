@@ -1,11 +1,10 @@
 <div class="container-fluid mb-3 mt-5" style="">
   <div class="row">
-
     <div class="col-md-4 mt-3">
       <img src="img/avatar/bg.jpg" class="" width="100%">
       <div class="container card">
         <div class="row">
-          <h6 class="col-md-12 text-uppercase py-2 text-primary display-5">James Phiri Boarding House</h6>
+          <h6 class="col-md-12 text-uppercase py-2 display-5">James Phiri Boarding House</h6>
           <div class="col-md-12 py-2">
             Price <span class="float-right">K 500/Bed space</span>
           </div>
@@ -16,8 +15,8 @@
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">0 Reviews</span>
           </div>
            <div class="col-md-12 py-2 mt-4 row">
-            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-primary">Details</a>
-            <button class="col-md-7 text-uppercase rounded-0 btn btn-primary" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-default text-white" style="background-color: #6777ef;">Details</a>
+            <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
           </div>
         </div>
       </div>
@@ -27,7 +26,7 @@
       <img src="img/avatar/bg1.jpg" class="" width="100%" height="230px">
       <div class="container card">
         <div class="row">
-          <h6 class="col-md-12 text-uppercase py-2 text-primary display-5">Green Gate</h6>
+          <h6 class="col-md-12 text-uppercase py-2 display-5">Green Gate</h6>
           <div class="col-md-12 py-2">
             Price <span class="float-right">K 500/Bed space</span>
           </div>
@@ -38,8 +37,8 @@
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">0 Reviews</span>
           </div>
            <div class="col-md-12 py-2 mt-4 row">
-            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-primary">Details</a>
-            <button class="col-md-7 text-uppercase rounded-0 btn btn-primary" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-default text-white" style="background-color: #6777ef;">Details</a>
+            <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
           </div>
         </div>
       </div>
@@ -49,7 +48,7 @@
       <img src="img/avatar/bg.jpg" class="" width="100%" height="230px">
       <div class="container card">
         <div class="row">
-          <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Green Gate</h6>
+          <h6 class="col-md-12 text-uppercase py-2 display-5" id="bhName">Green Gate</h6>
           <div class="col-md-12 py-2">
             Price <span class="float-right">K <span id="amount">500</span>/Bed space</span>
           </div>
@@ -60,8 +59,8 @@
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">0 Reviews</span>
           </div>
            <div class="col-md-12 py-2 mt-4 row">
-            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-primary">Details</a>
-            <button class="col-md-7 text-uppercase rounded-0 btn btn-primary" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-default text-white" style="background-color: #6777ef;">Details</a>
+            <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
           </div>
         </div>
       </div>
@@ -71,7 +70,7 @@
       <img src="img/avatar/bg.jpg" class="" width="100%">
       <div class="container card">
         <div class="row">
-          <h6 class="col-md-12 text-uppercase py-2 text-primary display-5">James Phiri Boarding House</h6>
+          <h6 class="col-md-12 text-uppercase py-2 display-5">James Phiri Boarding House</h6>
           <div class="col-md-12 py-2">
             Price <span class="float-right">K 500/Bed space</span>
           </div>
@@ -82,8 +81,8 @@
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">0 Reviews</span>
           </div>
            <div class="col-md-12 py-2 mt-4 row">
-            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-primary">Details</a>
-            <button class="col-md-7 text-uppercase rounded-0 btn btn-primary" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-default text-white" style="background-color: #6777ef;">Details</a>
+            <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
           </div>
         </div>
       </div>
@@ -93,7 +92,7 @@
       <img src="img/avatar/bg1.jpg" class="" width="100%" height="230px">
       <div class="container card">
         <div class="row">
-          <h6 class="col-md-12 text-uppercase py-2 text-primary display-5">Green Gate</h6>
+          <h6 class="col-md-12 text-uppercase py-2 display-5">Green Gate</h6>
           <div class="col-md-12 py-2">
             Price <span class="float-right">K 500/Bed space</span>
           </div>
@@ -104,8 +103,8 @@
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">0 Reviews</span>
           </div>
            <div class="col-md-12 py-2 mt-4 row">
-            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-primary">Details</a>
-            <button class="col-md-7 text-uppercase rounded-0 btn btn-primary" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+            <a href="./houseDetails.php" class="col-md-4 mx-1 rounded-0 btn btn-default text-white" style="background-color: #6777ef;">Details</a>
+            <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
           </div>
         </div>
       </div>
@@ -115,7 +114,7 @@
       <img src="img/avatar/bg.jpg" class="" width="100%" height="230px">
       <div class="container card">
         <div class="row">
-          <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Green Gate</h6>
+          <h6 class="col-md-12 text-uppercase py-2 display-5" id="bhName">Green Gate</h6>
           <div class="col-md-12 py-2">
             Price <span class="float-right">K <span id="amount">500</span>/Bed space</span>
           </div>
@@ -126,8 +125,8 @@
             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">0 Reviews</span>
           </div>
            <div class="col-md-12 py-2 mt-4 row">
-            <button class="col-md-4 mx-2 rounded-0 btn btn-primary">Details</button>
-            <button class="col-md-7 text-uppercase rounded-0 btn btn-primary" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+            <button class="col-md-4 mx-2 rounded-0 btn btn-default text-white" style="background-color: #6777ef;">Details</button>
+            <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
           </div>
         </div>
       </div>

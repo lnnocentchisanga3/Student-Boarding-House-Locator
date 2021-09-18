@@ -19,7 +19,14 @@ require "./config/config.php";
     </style>
   </head>
   <body>
-  <div class="container-fluid bg-light bg1">
+  
+  <div id="circle">
+  <img src="admin/assets/img/loading.gif">
+  </div>
+
+  <!-- <div class="loader"></div> -->
+
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
         <a href="#" class="navbar-brand col-md-12"><img src="img/other/lSBHL-logo.png" alt="Student boarding house locator" width="150px"></a>
@@ -27,29 +34,68 @@ require "./config/config.php";
       <!-- <div class="col-md-2"></div> -->
      <div class="col-md-6">
       <ul class="nav offset-md-5">
-        <li class="nav-item"><a href="#" class= "nav-link text-dark"><i class="fa fa-bell-o text-primary"><sup>2</sup></i> Notifications</a></li>
-        <li class="nav-item"><a href="#" class= "nav-link text-dark"><i class="lnr lnr-user"></i> Mwango <span><i class="fa fa-dot-circle-o text-success"></i></span></a></li>
-        <li class="nav-item"><a href="#" class= "nav-link text-dark"><i class="fa fa-power-off text-danger"></i> Logout</a></li>
+        <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-envelope-o" style="color: #585b5f;"><sup> 2</sup></i></a></li>
+       <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-bell-o" style="color: #585b5f;"></i></a></li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user-circle" style="color: #585b5f;"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item bg-danger text-white" href="#"><i class="lnr lnr-exit"></i> Logout</a>
+        </div>
+      </li>
+
       </ul>
      </div>
+     <!-- space for other contents -->
     </div>
   </div>
 <!-- Nav -->
-<nav class="navbar navbar-expand-lg navbar-light col-md-12 border-bottom bg-primary" style="z-index: 999;">
+<nav class="navbar navbar-expand-lg navbar-light col-md-12 border-bottom shadow-sm" >
 
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuButton" aria-controls="menuButton" aria-expanded="false" aria-label="Toggle navigation">
-  <span><i class="lnr lnr-menu text-light"> Menu</i></span><i class=""></i>
+  <span><i class="lnr lnr-menu"> Menu</i></span><i class=""></i>
 </button>
 
 <div class="collapse navbar-collapse" id="menuButton">
   <ul class="navbar-nav mr-auto py-2 col-md-12">
-    <li class="nav-item"><a href="./index.php" class="nav-link text-light"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
-    <li class="nav-item"><a href="#" class="nav-link text-light"><i class="lnr lnr-users"></i> Landlords</a></li>
-    <li class="nav-item"><a href="./myroom.show.php" class="nav-link text-light"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
-    <li class="nav-item"><a href="#" class= "nav-link text-light"><i class="lnr lnr-question-circle"></i></a></li>
-    <li class="nav-item"><a href="#" class= "nav-link text-light"><span ></span></a></li>
+    <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
+    <li class="nav-item"><a href="./landlords.php" class="nav-link"><i class="lnr lnr-users"></i> Landlords</a></li>
+    <li class="nav-item"><a href="./myroom.show.php" class="nav-link"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
+    <li class="nav-item"><a href="#" class= "nav-link"><i class="lnr lnr-question-circle"></i></a></li>
+    <li class="nav-item"><a href="#" class= "nav-link"><span ></span></a></li>
   </ul>
 </div>
+<div class="col-md-8 input-group my-2">
+      <input type="text" name="search" placeholder="keywords" class="form-control col-md-2 mx-1">
+      <select name="search2" placeholder="Street" class="form-control col-md-2 mx-1" onchange="getStreet(this.value)">
+        <option>Street</option>
+        <option>James Phiri</option>
+        <option>Mwata kazembe</option>
+        <option>Mwatayanwvo</option>
+      </select>
+      <select name="search3" placeholder="Intake" class="form-control col-md-2 mx-1">
+        <option>Intake</option>
+        <option>2021</option>
+        <option>2020</option>
+        <option>2019</option>
+        <option>2018</option>
+        <option>2017</option>
+      </select>
+      <select name="search4" placeholder="program" class="form-control col-md-2 mx-1">
+        <option>Program</option>
+        <option>BIT</option>
+        <option>BICT</option>
+        <option>BBA</option>
+        <option>ACCA</option>
+        <option>ZICA</option>
+      </select>
+      <button class="btn btn-default" style="background-color: #6777ef;"><i class="lnr lnr-magnifier px-2 text-white"></i></button>
+    </div>
 </nav>
 
 <div class="col-md-12 mt-3">
@@ -87,25 +133,13 @@ require "./config/config.php";
      </ul>
     </div> -->
      <div class="col-md-12 py-2 mt-4 row">
-      <button class="col-md-7 text-uppercase rounded-0 btn btn-primary" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+      <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
     </div>
     </div>
 
   </div>
 </div>
     </div>
-
-<div id="circle">
-  <div class="loader">
-    <div class="loader">
-        <div class="loader">
-           <div class="loader">
-
-           </div>
-        </div>
-    </div>
-  </div>
-</div>
 
 
 <!-- The Reservation Modal -->

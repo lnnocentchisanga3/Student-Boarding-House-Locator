@@ -15,32 +15,60 @@ require "./config/config.php";
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
 
     <meta charset="utf-8"/>
-    <style>
-    /*.bg1{
-       background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0.7),black), url(img/avatar/bg.jpg);
-        background-size: cover;
-        background-attachment: fixed;
-        /*height: 50vh;*/
-        }*/
-    </style>
   </head>
-  <body onload="displayHouses()">
-  <div class="container-fluid bg-light bg1">
+  <body>
+
+  <div id="circle">
+  
+  </div>
+
+  <!-- <div class="loader"></div> -->
+
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
         <a href="#" class="navbar-brand col-md-12"><img src="img/other/lSBHL-logo.png" alt="Student boarding house locator" width="150px"></a>
      </div>
       <!-- <div class="col-md-2"></div> -->
      <div class="col-md-6">
-      <ul class="nav offset-md-5">
-        <li class="nav-item"><a href="#" class= "nav-link text-dark"><i class="fa fa-bell-o text-primary"><sup>2</sup></i> Notifications</a></li>
-        <li class="nav-item"><a href="#" class= "nav-link text-dark"><i class="lnr lnr-user"></i> Mwango <span><i class="fa fa-dot-circle-o text-success"></i></span></a></li>
-        <li class="nav-item"><a href="#" class= "nav-link text-dark"><i class="fa fa-power-off text-danger"></i> Logout</a></li>
+      <ul class="nav float-right mr-5">
+        <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-envelope-o" style="color: #585b5f;"><sup> 2</sup></i></a></li>
+       <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-bell-o" style="color: #585b5f;"></i></a></li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user-circle" style="color: #585b5f;"></i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Settings</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item bg-danger text-white" href="#"><i class="lnr lnr-exit"></i> Logout</a>
+        </div>
+      </li>
+
       </ul>
      </div>
+     <!-- space for other contents -->
+    </div>
+  </div>
+<!-- Nav -->
+<nav class="navbar navbar-expand-lg navbar-light col-md-12 border-bottom shadow-sm sticky" >
 
-    <div class="col-md-9 mb-4 pt-5 input-group offset-md-2">
-      <label class="col-md-12 text-uppercase text-dark text-left">Search for a boarding house of your choice </label>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuButton" aria-controls="menuButton" aria-expanded="false" aria-label="Toggle navigation">
+  <span><i class="lnr lnr-menu"> Menu</i></span><i class=""></i>
+</button>
+
+<div class="collapse navbar-collapse" id="menuButton">
+  <ul class="navbar-nav mr-auto py-2 col-md-12">
+    <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
+    <li class="nav-item"><a href="./landlords.php" class="nav-link"><i class="lnr lnr-users"></i> Landlords</a></li>
+    <li class="nav-item"><a href="./myroom.show.php" class="nav-link"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
+    <li class="nav-item"><a href="#" class= "nav-link"><i class="lnr lnr-question-circle"></i></a></li>
+    <li class="nav-item"><a href="#" class= "nav-link"><span ></span></a></li>
+  </ul>
+</div>
+<div class="col-md-8 input-group my-2">
       <input type="text" name="search" placeholder="keywords" class="form-control col-md-2 mx-1">
       <select name="search2" placeholder="Street" class="form-control col-md-2 mx-1" onchange="getStreet(this.value)">
         <option>Street</option>
@@ -64,28 +92,10 @@ require "./config/config.php";
         <option>ACCA</option>
         <option>ZICA</option>
       </select>
-      <button class="btn btn-primary rounded-0"><i class="lnr lnr-magnifier px-2"></i></button>
+      <button class="btn btn-default" style="background-color: #6777ef;"><i class="lnr lnr-magnifier px-2 text-white"></i></button>
     </div>
-    </div>
-  </div>
-<!-- Nav -->
-<nav class="navbar navbar-expand-lg navbar-light col-md-12 border-bottom bg-primary" style="z-index: 999;">
-
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuButton" aria-controls="menuButton" aria-expanded="false" aria-label="Toggle navigation">
-  <span><i class="lnr lnr-menu text-light"> Menu</i></span><i class=""></i>
-</button>
-
-<div class="collapse navbar-collapse" id="menuButton">
-  <ul class="navbar-nav mr-auto py-2 col-md-12">
-    <li class="nav-item"><a href="#" class="nav-link text-light"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
-    <li class="nav-item"><a href="./landlords.php" class="nav-link text-light"><i class="lnr lnr-users"></i> Landlords</a></li>
-    <li class="nav-item"><a href="./myroom.show.php" class="nav-link text-light"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
-    <li class="nav-item"><a href="#" class= "nav-link text-light"><i class="lnr lnr-question-circle"></i></a></li>
-    <li class="nav-item"><a href="#" class= "nav-link text-light"><span ></span></a></li>
-  </ul>
-</div>
 </nav>
-<div class="col-md-12 mt-3">
+<!-- <div class="col-md-12 mt-3">
   <div class="col-md-12">
    <p class="text-center" id="geoMsg"></p>
  </div>
@@ -95,23 +105,12 @@ require "./config/config.php";
     <option id="names"></option>
   </select>
  </div>
-</div>
+</div> -->
 
 <?php 
 require './components/houses.php';
 ?>
 
- <div id="circle">
-  <div class="loader">
-    <div class="loader">
-        <div class="loader">
-           <div class="loader">
-
-           </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id="paraTest" class="text-center" style="display: none;">
     <img src="img/other/paydone.gif" class="col-md-12" width="">
@@ -123,8 +122,11 @@ require './components/houses.php';
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/geoMap.js"></script>
     <script src="js/javascript.js"></script>
+   <!--  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
     <script>
-      
+     
     </script>
   </body>
 </html>
