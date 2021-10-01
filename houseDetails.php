@@ -1,6 +1,8 @@
 <?php
+session_start();
 require "./config/config.php";
-?>
+if (isset($_SESSION['userid'])) {
+ ?>
 <!DOCTYPE html>
 <html lang="en" manifest="config/cache.appcache">
   <head>
@@ -13,16 +15,17 @@ require "./config/config.php";
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/owl.theme.default.css" />
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
-
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
     <meta charset="utf-8"/>
     <style>
     </style>
   </head>
   <body>
   
-  <div id="circle">
-  <img src="admin/assets/img/loading.gif">
-  </div>
+  <div id="circle"></div>
 
   <!-- <div class="loader"></div> -->
 
@@ -38,16 +41,14 @@ require "./config/config.php";
        <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-bell-o" style="color: #585b5f;"></i></a></li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-user-circle" style="color: #585b5f;"></i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Settings</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item bg-danger text-white" href="#"><i class="lnr lnr-exit"></i> Logout</a>
-        </div>
-      </li>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $_SESSION['fname']." ";?><i class="fa fa-user-circle" style="color: #585b5f;"></i></a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+      <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Settings</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item btn btn-danger" href="./components/logout.php?action=logout"><i class="lnr lnr-exit"></i> Logout</a>
+    </div>
+  </li>
 
       </ul>
      </div>
@@ -70,47 +71,13 @@ require "./config/config.php";
     <li class="nav-item"><a href="#" class= "nav-link"><span ></span></a></li>
   </ul>
 </div>
-<div class="col-md-8 input-group my-2">
-      <input type="text" name="search" placeholder="keywords" class="form-control col-md-2 mx-1">
-      <select name="search2" placeholder="Street" class="form-control col-md-2 mx-1" onchange="getStreet(this.value)">
-        <option>Street</option>
-        <option>James Phiri</option>
-        <option>Mwata kazembe</option>
-        <option>Mwatayanwvo</option>
-      </select>
-      <select name="search3" placeholder="Intake" class="form-control col-md-2 mx-1">
-        <option>Intake</option>
-        <option>2021</option>
-        <option>2020</option>
-        <option>2019</option>
-        <option>2018</option>
-        <option>2017</option>
-      </select>
-      <select name="search4" placeholder="program" class="form-control col-md-2 mx-1">
-        <option>Program</option>
-        <option>BIT</option>
-        <option>BICT</option>
-        <option>BBA</option>
-        <option>ACCA</option>
-        <option>ZICA</option>
-      </select>
-      <button class="btn btn-default" style="background-color: #6777ef;"><i class="lnr lnr-magnifier px-2 text-white"></i></button>
-    </div>
 </nav>
 
 <div class="col-md-12 mt-3">
-<div class="container card py-3">
+<div class="container card py-3 shadow" style="border-top: 3px solid #6777ef;">
   <div class="row">
     <div class="col-md-4">
       <img src="img/avatar/bg.jpg" class="col-md-12" width="" height="230px">
-      <div class="container">
-        <div class="row">
-           <a href="#" class="col-md-3 my-4 border"><img src="img/avatar/bg.jpg" width="100%"  height="auto"></a>
-            <a href="#" class="col-md-3 my-4 border"><img src="img/avatar/bg.jpg" width="100%"  height="auto"></a>
-           <a href="#" class="col-md-3 my-4 border"><img src="img/avatar/bg.jpg" width="100%"  height="auto"></a>
-          <a href="#" class="col-md-3 my-4 border"><img src="img/avatar/bg.jpg" width="100%"  height="auto"></a>
-        </div>
-      </div>
     </div>
     <div class="col-md-8">
       <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Green Gate</h6>
@@ -124,21 +91,72 @@ require "./config/config.php";
       <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">3 Reviews</span>
     </div>
     <div class="col-md-12 py-2">
+      <i class="fa fa-users"></i> Number of students<span class="float-right">15</span>
+    </div>
+    <div class="col-md-12 py-2">
       <i class="fa fa-user-circle"></i> Landlord's name<span class="float-right">Mr Mwango Chisanga</span>
     </div>
-    <!-- <div class="col-md-12">
-     <ul class="navbar-nav">
-       <li><i class="fa fa-wifi"></i></li>
-        <li></li>
-     </ul>
-    </div> -->
-     <div class="col-md-12 py-2 mt-4 row">
-      <button class="col-md-7 text-uppercase rounded-0 btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
+    <div class="col-md-12 py-2">
+      <i class="fa fa-phone"></i> Contact Number<span class="float-right">0966367116 / 0979023093</span>
+    </div>
+    <div class="col-md-12 py-2">
+      <i class="fa fa-dollar"></i> Payment Method<span class="float-right">Mobile Money</span>
     </div>
     </div>
 
   </div>
 </div>
+<div class="py-2 text-center pt-5">
+  <h4 class="text-muted text-uppercase text-underline">The available rooms</h4>
+</div>
+
+<!-- The second part -->
+<div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
+  <div class="row">
+    <div class="col-md-2">
+      <img src="img/avatar/bg.jpg" class="col-md-12" >
+    </div>
+    <div class="col-md-6">
+      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Room Number 10</h6>
+    <div class="col-md-12 py-2">
+     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">500</span>/Bed space</span>
+    </div>
+    <div class="col-md-12 py-2">
+      <i class="fa fa-bed"></i> Available bed spaces <span class="float-right">1/3</span>
+    </div>
+    </div>
+    <div class="col-md-4">
+      <button class="col-md-7 my-2 text-uppercase btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-check"></i> Reserve space</button>
+
+       <button class="col-md-7 my-2 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-eye"></i> Room mates</button>
+    </div>
+  </div>
+</div>
+<!-- The end tof the second part -->
+
+<!-- Third part -->
+<div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
+  <div class="row">
+    <div class="col-md-2">
+      <img src="img/avatar/bg.jpg" class="col-md-12" >
+    </div>
+    <div class="col-md-6">
+      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Room number 12</h6>
+    <div class="col-md-12 py-2">
+     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">500</span>/Bed space</span>
+    </div>
+    <div class="col-md-12 py-2">
+      <i class="fa fa-bed"></i> Available bed spaces <span class="float-right">2/3</span>
+    </div>
+    </div>
+    <div class="col-md-4">
+       <button class="col-md-7 my-2 text-uppercase btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-check"></i> Reserve space</button>
+
+       <button class="col-md-7 my-2 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-eye"></i> Room mates</button>
+    </div>
+  </div>
+</div>
+<!-- The end of the third part -->
     </div>
 
 
@@ -213,3 +231,8 @@ require "./config/config.php";
     </script>
   </body>
 </html>
+ <?php
+}else{
+  header("location: ./auth-login.php?action=login_first");
+}
+?>

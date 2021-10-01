@@ -1,13 +1,16 @@
 <?php
-$server = "localhost";
-$user = "root";
-$pwd = "";
+$servername = "localhost";
+$username = "root";
+$password = "";
 $database = "student_boarding_house_locator";
 
-if (mysqli_connect($server,$user,$pwd,$database)) {
-	/*echo "db connected";*/
-}else{
-	echo "Not connected";
-}
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,$database);
 
-?>
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . $conn->connect_error);
+}else{
+/*echo "";*/
+}
+?> 

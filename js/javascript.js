@@ -16,7 +16,6 @@ $(window).on("load", function () {
 });
 
 
-
 // setInterval(function() {
 //    document.onreadystatechange = function() {
 //     if (document.readyState !== "complete") {
