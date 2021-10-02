@@ -34,8 +34,15 @@ if (isset($_POST['login'])) {
 				$_SESSION['userid'] = $row['user_id'];
 				$_SESSION['fname'] = $row['fname'];
 				$_SESSION['lname'] = $row['lname'];
+				$_SESSION['role'] = $row['role'];
 
-				header("location: ../index.php?");
+				if ($_SESSION['role'] == "Student") {
+					header("location: ../index.php?");
+				}elseif ($_SESSION['role'] == "Landlord") {
+					header("location: ../landlord_acc.php?");
+				}else{
+					header("location: ../admin/");
+				}
 			}else{
 				header("location: ../auth-login.php?action=error_occured");
 			}
