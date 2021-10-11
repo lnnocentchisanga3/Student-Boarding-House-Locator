@@ -214,6 +214,8 @@ function chart3() {
             curve: 'straight',
             dashArray: [0, 8, 5]
         },
+
+
         series: [{
             name: "Option 1",
             data: [45, 52, 38, 24, 33, 26, 21, 20]
@@ -227,6 +229,8 @@ function chart3() {
             data: [87, 57, 74, 99, 75, 38, 62, 47]
         }
         ],
+
+        
         legend: {
             show: false,
         },
@@ -268,6 +272,9 @@ function chart3() {
 
     chart.render();
 }
+
+
+
 function chart4() {
     var options = {
         chart: {

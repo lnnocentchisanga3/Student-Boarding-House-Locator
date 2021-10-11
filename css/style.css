@@ -19,28 +19,6 @@ body, html {
 }
 
 
-/*#circle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-  width: 150px;
-    height: 150px;  
-}
-
-.loader {
-    width: calc(100% - 0px);
-  height: calc(100% - 0px);
-  border: 8px solid #6777ef;
-  border-top: 8px solid #09f;
-  border-radius: 50%;
-  animation: rotate 5s linear infinite;
-}
-
-@keyframes rotate {
-100% {transform: rotate(360deg);}
-}*/
-
 #circle{
   position:fixed;
   left:0px;
@@ -52,3 +30,136 @@ body, html {
   opacity:1
 } 
 
+@media only screen and (max-width: 990px){
+  #menuItem{
+    display: none;
+  }
+}
+
+    *{
+      font-family: 'ubuntu', sans-serif;
+      font-size: 13px;
+    }
+    .mainWrapper{
+      margin-left: auto;
+      width: 83.34%;
+    }
+    #menuItemShow{
+      display: none;
+      width: 100%;
+      -webkit-transition: 2s ease-in-out; 
+      -moz-transition: 2s ease-in-out; 
+      -o-transition: 2s ease-in-out; 
+      transition: 2s ease-in-out; 
+      margin: 0; 
+      padding: 0; 
+      -webkit-text-size-adjust: none; 
+    }
+    #menuItem{
+      width: 16.66%;
+    }
+    .landActions a{
+      color: grey;
+    }
+    .landActions:hover{
+      width: 110%;
+      background-color: #6777ef;
+      font-size: 20px;
+      z-index: 1;
+    }
+
+    .landActions a:hover{
+      color: white;
+    }
+
+    @media only screen and (min-width: 700px){
+    #menuItemShow{
+    display: block;
+    }
+    #btnMenu{
+      display: none;
+    }
+
+  }
+
+  @media only screen and (max-width: 930px){
+    #menuItem{
+    display: none;
+    }
+    #btnMenu{
+      display: flex;
+    }
+    .mainWrapper{
+    margin: auto;
+    width: 100%;
+  }
+  }
+
+
+  /* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  /*z-index: 1;*/ /* Sit on top */
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  border-top: 1px solid #6777ef;
+  background-color: rgb(255,255,255); /* Black fallback color */
+  /*background-color: rgba(255,255,255, 0.9);*/ /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.50s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  /*text-align: left;*/ /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+.overlay-content a:hover{
+  width: 100%;
+  background-color: #6777ef;
+  color: white;
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+  .mainWrapper{
+    width: 100%;
+  }
+}

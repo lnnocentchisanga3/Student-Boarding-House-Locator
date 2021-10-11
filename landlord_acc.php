@@ -11,77 +11,137 @@ if (isset($_SESSION['userid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="vendors/linericon/style.css">
-   <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/owl.theme.default.css" />
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/style.css"/>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     
     <meta charset="utf-8"/>
     <style>
+
     </style>
   </head>
-  <body>
+  <body class="bg-light">
   
   <div id="circle"></div>
 
   <!-- <div class="loader"></div> -->
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <a href="#" class="navbar-brand col-md-12"><img src="img/other/lSBHL-logo.png" alt="Student boarding house locator" width="150px"></a>
-     </div>
-      <!-- <div class="col-md-2"></div> -->
-     <div class="col-md-6">
-      <ul class="nav offset-md-5">
+  <nav class="navbar navbar-expand-lg bg-white col-md-12 sticky " style="position: fixed; z-index:9999;">
+      <ul class="nav ml-auto">
+        <li class="nav-item " id="btnMenu" onclick="openNav()"><a href="javascript:void(0)" class="nav-link text-muted"><i class="lnr lnr-menu"> Menu</i></a></li>
         <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-envelope-o" style="color: #585b5f;"><sup> 2</sup></i></a></li>
        <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-bell-o" style="color: #585b5f;"></i></a></li>
 
-      <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $_SESSION['fname']." ";?><i class="fa fa-user-circle" style="color: #585b5f;"></i></a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="#" ><i class="fa fa-user"></i> Profile</a>
-      <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Settings</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item btn btn-danger" href="./components/logout.php?action=logout"><i class="lnr lnr-exit"></i> Logout</a>
-    </div>
-  </li>
+      <li class="nav-item">
+    <a class="nav-link text-muted" href="#"><?php echo $_SESSION['fname']." ".$_SESSION['lname']." ";?><img src="img/avatar/3.jpg" width="20px" height="20px" style="border-radius: 50%;"></a></li>
 
-      </ul>
-     </div>
-     <!-- space for other contents -->
-    </div>
-  </div>
-<!-- Nav -->
-<nav class="navbar navbar-expand-lg navbar-light col-md-12 border-bottom shadow-sm" >
+  </ul>
+  </nav>
 
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuButton" aria-controls="menuButton" aria-expanded="false" aria-label="Toggle navigation">
-  <span><i class="lnr lnr-menu"> Menu</i></span><i class=""></i>
-</button>
 
-<div class="collapse navbar-collapse" id="menuButton">
-  <ul class="navbar-nav mr-auto py-2 col-md-12">
-    <li class="nav-item"><a href="" class="nav-link">Add a room </a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Tenants</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">Payments <sup><i class="fa fa-mark"></i></sup></a></li>
-    <li class="nav-item"><a href="#" class= "nav-link">Add a boarding house</a></li>
-    <li class="nav-item"><a href="#" class= "nav-link"><span ></span></a></li>
+  <div class="container-fluid">
+    <div class="row">
+
+<div class="shadow-sm bg-white" style="z-index: 9999; position: fixed; height: 100vh;" id="menuItem">
+        <!-- Side Nav -->
+<nav class="navbar bg-white col-md-12">
+  <div class="col-md-12"><a href="#" class="navbar-brand col-md-12"><img src="img/other/lSBHL-logo.png" alt="Student boarding house locator" width="100px"></a></div>
+
+<div class="" >
+     <h6 class="my-3 text-muted">Menu</h6>
+  <ul class="navbar-nav mr-auto"> 
+    <li class="nav-item px-2 landActions"><a href="" class="nav-link"><i class="fa fa-bed"></i> Rooms </a></li>
+    <li class="nav-item px-2 landActions"><a href="#" class="nav-link"><i class="lnr lnr-users"></i> Tenants</a></li>
+    <li class="nav-item px-2 landActions "><a href="#" class="nav-link"><i class="fa fa-money"></i> Payments</a></li>
+    <li class="nav-item px-2 landActions"><a href="#" class="nav-link"><i class="lnr lnr-home"></i> Boarding houses</a></li>
+    <li class="nav-item px-2 landActions"><li class="nav-item px-2 landActions"><a class="nav-link" href="#"><i class="lnr lnr-cog"></i> Settings</a></li>
+    <li class="nav-item px-2 landActions"><li class="nav-item px-2 landActions"><a class="nav-link" href="#" ><i class="lnr lnr-user"></i> Profile</a></li>
+    <li class="nav-item px-2 landActions"><li class="nav-item px-2 landActions"><a class="nav-link" href="./components/logout.php?action=logout"><i class="lnr lnr-exit"></i> Logout</a></li></li>
   </ul>
 </div>
 </nav>
+</div>
 
-<div class="col-md-12 mt-3">
-<div class="container card py-3 shadow" style="border-top: 3px solid #6777ef;">
+
+<!-- The overlay -->
+<div id="myNav" class="overlay">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn text-danger" onclick="closeNav()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <a href="javascript:void(0)" class="nav-link"><i class="fa fa-bed"></i> Rooms </a>
+    <a href="#" class="nav-link"><i class="lnr lnr-users"></i> Tenants</a>
+    <a href="#" class="nav-link"><i class="fa fa-money"></i> Payments</a>
+    <a href="#" class="nav-link"><i class="lnr lnr-home"></i> Boarding houses</a>
+    <a class="nav-link" href="#"><i class="lnr lnr-cog"></i> Settings</a>
+    <a class="nav-link" href="#" ><i class="lnr lnr-user"></i> Profile</a>
+    <a class="nav-link" href="./components/logout.php?action=logout"><i class="lnr lnr-exit"></i> Logout</a>
+  </div>
+
+</div>
+
+<!-- Use any element to open/show the overlay navigation menu -->
+<!-- <span onclick="openNav()">open</span> -->
+
+<!-- <div class="shadow-sm bg-white container-fluid" style="z-index: 9999; position: fixed; height: 100vh; display: none;" id="menuItemShow">
+   <div class="row">
+     <div class="col-md-12">
+       <span class="col-md-2 my-2 float-right" id="btnMenu" onclick="displayMenu()"><i class="fa fa-close text-danger fa-2x"></i></span>
+     </div>
+  
+        Side Nav 
+<nav class="navbar bg-white">
+  <ul class="navbar-nav"> 
+    <li class="nav-item px-2 landActions"><a href="" class="nav-link"><i class="fa fa-bed"></i> Rooms </a></li>
+    <li class="nav-item px-2 landActions"><a href="#" class="nav-link"><i class="lnr lnr-users"></i> Tenants</a></li>
+    <li class="nav-item px-2 landActions "><a href="#" class="nav-link"><i class="fa fa-money"></i> Payments</a></li>
+    <li class="nav-item px-2 landActions"><a href="#" class="nav-link"><i class="fa fa-home"></i> Boarding houses</a></li>
+    <li class="nav-item px-2 landActions"><a class="nav-link" href="./components/logout.php?action=logout"><i class="lnr lnr-exit"></i> Logout</a></li>
+  </ul>
+</nav>
+  </div>
+</div> -->
+
+<script>
+  function showMenu() {
+   document.getElementById("menuItemShow").style.display = "flex";
+   document.body.style.height = "100vh";
+  }
+
+  function displayMenu(){
+    document.getElementById('menuItemShow').style.display = "none";
+   document.getElementById("menuItemShow").style.width = "";
+   document.body.style.height = "";
+  }
+
+
+  /* Open when someone clicks on the span element */
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
+<div class="mainWrapper" style="margin-top: 5rem;">
+  <div class="col-md-12 mt-3">
+<div class="container card py-3 shadow" >
   <div class="row">
     <div class="col-md-4">
-      <img src="img/avatar/bg.jpg" class="col-md-12" width="" height="230px">
+      <img src="img/avatar/3.jpg" width="100%" height="250px">
     </div>
     <div class="col-md-8" id="EditDetails">
       <h6 class="col-md-12 text-center" id="editMsg"></h6>
-      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Green Gate</h6>
+      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Mwaka Musonda</h6>
     <div class="col-md-12 py-2" id="detailsLord">
      <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">600</span>/Bed space</span>
     </div>
@@ -107,15 +167,8 @@ if (isset($_SESSION['userid'])) {
      <div class="container border-top mt-3">
       <div class="row">
       <div class="col-md-6">
-        <h6 class="mx-2">Actions</h6>
-      <button class="btn btn-success mx-1" onclick="EditDetailsLandlord()">Edit <i class="fa fa-edit"></i></button>
-      <button class="btn btn-primary mx-1" onclick="saveDetailsLandlord()">Save <i class="fa fa-save"></i></button>
-      </div>
-
-      <div class="col-md-6">
-        <h6 class="mx-2">Boarding houses</h6>
-        <button class="btn btn-default mx-1 text-white" onclick="saveDetailsLandlor()" style="background-color: #6777ef;">Green Gate <i class="fa fa-home"></i></button>
-      <button class="btn btn-warning mx-1 text-white" onclick="saveDetailsLandlor()">Winfridah BH <i class="fa fa-home"></i></button>
+      <button class="btn btn-success mx-1 my-2" onclick="EditDetailsLandlord()">Edit <i class="fa fa-edit"></i></button>
+      <button class="btn btn-primary mx-1 my-2" onclick="saveDetailsLandlord()">Save <i class="fa fa-save"></i></button>
       </div>
       </div>
     </div>
@@ -131,7 +184,7 @@ if (isset($_SESSION['userid'])) {
 
 
 </script>
-<div class="py-2 text-center pt-5">
+<div class="py-4 text-center mt-5 bg-white shadow">
   <h4 class="text-muted text-uppercase text-underline">The available rooms</h4>
 </div>
 
@@ -244,6 +297,12 @@ if (isset($_SESSION['userid'])) {
     <img src="img/other/paydone.gif" class="col-md-12" width="">
     <h5 class="col-md-12 text-center py-2 text-uppercase">Payment is Done<br>Just wait for the Confirmation</h5>
   </div>
+</div>
+
+
+    </div>
+  </div>
+
 
 
     <script src="js/jquery-3.3.1.min.js"></script>

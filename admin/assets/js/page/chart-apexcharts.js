@@ -277,6 +277,9 @@ function chart3() {
 
     chart.render();
 }
+
+
+
 function chart4() {
     var options = {
         chart: {
@@ -360,6 +363,9 @@ function chart4() {
 
     chart.render();
 }
+
+
+
 function chart5() {
     var options = {
         chart: {
