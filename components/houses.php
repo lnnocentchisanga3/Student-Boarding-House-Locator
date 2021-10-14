@@ -4,7 +4,7 @@
    <div class="container-fluid mb-3 mt-5" style="">
   <div class="row">
   
-  <div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
+  <!-- <div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
   <div class="row">
     <div class="col-md-2">
       <img src="img/avatar/bg.jpg" class="img-responsive" width="100%" height="150px">
@@ -103,7 +103,11 @@
          <button class="col-md-7 my-2 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#searchModal" onclick="getDetails()">Make Reservation</button>
     </div>
   </div>
-</div>
+</div> -->
+
+<?php
+echo getMyBoardingHousesRoomsAll();
+?>
 
 
 

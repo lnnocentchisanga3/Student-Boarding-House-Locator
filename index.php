@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "./components/functions.php";
 require "./config/config.php";
 if (isset($_SESSION['userid'])) {
  ?>

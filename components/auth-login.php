@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
 				if ($_SESSION['role'] == "Student") {
 					header("location: ../index.php?");
 				}elseif ($_SESSION['role'] == "Landlord") {
-					header("location: ../landlord_acc.php?");
+					header("location: ../landlord_acc.php?pages=rooms");
 				}else{
 					header("location: ../admin/");
 				}

@@ -29,7 +29,19 @@ if (isset($_POST['register'])) {
 		}else{
 			$query = mysqli_query($conn, "INSERT INTO users(`fname`,`lname`,`email`,`phone`,`role`,`pwd`,`agree`,`status`) VALUES('$fname','$lname','$email','$phone','$role','$pwd_final','$agree','off')");
 		if ($query) {
-			header("location: ../auth-login.php?");
+			if ($role == "Student") {
+				header("location: ../auth-login.php?");
+			}elseif ($role == " ") {
+				header("location: ../auth-login.php?");
+			}else{
+				$query_landlord = mysqli_query($conn, "INSERT INTO landloard(`L_name`,`F_name`) VALUES('$lname','$fname')");
+				if ($query_landlord) {
+					header("location: ../auth-login.php?");
+				}else{
+					echo "Error : ".mysqli_error($conn);
+				}
+			}
+			
 		}else{
 			/*header("location: ../login.php?action=registeration_not_done");*/
 
