@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
 				}elseif ($_SESSION['role'] == "Landlord") {
 					header("location: ../landlord_acc.php?pages=rooms");
 				}else{
-					header("location: ../admin/");
+					header("location: ../Admin/index.php");
 				}
 			}else{
 				header("location: ../auth-login.php?action=error_occured");
