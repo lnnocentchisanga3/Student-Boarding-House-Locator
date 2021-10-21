@@ -89,6 +89,7 @@
                     <select class="form-control " required name="role">
                       <option>Student</option>
                       <option>Landlord</option>
+                      
                     </select>
                     </div>
 
