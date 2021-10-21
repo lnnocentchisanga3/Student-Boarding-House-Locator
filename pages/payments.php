@@ -4,9 +4,9 @@
     <div class="row">
       <div class="col-md-9">
         <div class="row">
-          <h6 class="col-md-4"><i class="fa fa-home"></i> My Boarding Houses</h6>
+          <h6 class="col-md-4"><i class="fa fa-money"></i> Tenants payments</h6>
           <div class="col-md-4">
-            <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#addHouseModal"><i class="fa fa-plus-circle"></i> Add</a>
+            <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#addHousePaymentModal"><i class="fa fa-plus-circle"></i> Add a payment</a>
           </div>
           <div class="col-md-4">
             <a href="#"></a>
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="col-md-3">
-        <input type="text" name="searchTenant" class="form-control col-md-12" placeholder="Search by boarding house number" style="border-top-left-radius: 1.7rem; border-top-right-radius: 1.7rem;border-bottom-right-radius: 1.7rem; border-bottom-left-radius: 1.7rem;" id="input" onkeyup="myFilters()">
+        <input type="text" name="searchTenant" class="form-control col-md-12" placeholder="Search by Tenant's name" style="border-top-left-radius: 1.7rem; border-top-right-radius: 1.7rem;border-bottom-right-radius: 1.7rem; border-bottom-left-radius: 1.7rem;" id="input" onkeyup="myFilters()">
       </div>
     </div>
   </div>
@@ -22,12 +22,12 @@
   <table class="table table-striped" id="myTable">
     <thead>
       <tr>
-        <th>BH Number</th>
+        <th>Tenant</th>
         <th>Bh Name</th>
         <th>picture</th>
-        <th>location</th>
-        <th>Street</th>
-        <th>Action</th>
+        <th>Room</th>
+        <th>Paid Amount</th>
+        <!-- <th>Action</th> -->
       </tr>
     </thead>
     <tbody>
@@ -42,13 +42,13 @@
 
 
 <!-- Adding a house Modal -->
-  <div class="modal fade" id="addHouseModal">
+  <div class="modal fade" id="addHousePaymentModal">
     <div class="modal-dialog modal-dialog-centered mt-5">
       <div class="modal-content rounded-0 bg-light">
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h6 class="modal-title"> <h6 class="text-uppercase"><i class="fa fa-plus-circle"></i> add a boarding house</h6></h6>
+          <h6 class="modal-title"> <h6 class="text-uppercase"><i class="fa fa-money mx-2"></i><i class="fa fa-plus"></i> Add a payment</h6></h6>
           <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
         </div>
         <!-- Modal body -->
@@ -159,44 +159,6 @@ function editHouseDetails(houseId) {
   }
 
 function deleteHouseDetails(houseId){
-   let xhttp;
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      window.alert(this.responseText);
-    } 
-    };
-
-    xhttp.open("GET","./components/housedelete.php?houseId="+houseId, true);
-    xhttp.send();
+  window.alert(houseId);
 }
-
-$(document).ready(function (e) {
-    $('#editBoardingHouse').on('submit',(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-
-        $.ajax({
-            type:'POST',
-            url: $(this).attr('action'),
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-                window.alert(data);
-            },
-            error: function(data){
-                window.alert("error");
-               window.alert(data);
-            }
-        });
-
-    }));
-
-    /*$("#ImageBrowse").on("change", function() {
-        $("#imageUploadForm").submit();
-    });*/
-});
 </script>

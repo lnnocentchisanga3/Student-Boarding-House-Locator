@@ -37,6 +37,21 @@
               <div class="card-header">
                 <h4><i data-feather="user"></i> Login</h4>
               </div>
+              <div class="col-md-12">
+                <?php
+                if (isset($_GET['action'])) {
+                  $action = $_GET['action'];
+
+                  if ($action == "user_not_exists") {
+                    echo '<h6 class="py-2 text-danger text-center px-2" style="border-radius: 5px; border-left: 3px solid red;">You are not registered</h6>';
+                  }elseif ($action == "wrong_pwd") {
+                    echo '<h6 class="py-2 text-danger text-center px-2" style="border-radius: 5px; border-left: 3px solid red;">You are have entered a wrong password</h6>';
+                  }elseif ($action == "login_first") {
+                   echo '<h6 class="py-2 text-danger text-center px-2" style="border-radius: 5px; border-left: 3px solid red;">You are have to login first</h6>';
+                  }
+                }
+                ?>
+              </div>
               <div class="card-body">
                 <form method="POST" action="./components/auth-login.php" class="needs-validation" novalidate="">
                   <div class="form-group">

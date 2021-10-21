@@ -1,6 +1,7 @@
 <?php
 session_start();
 require "./config/config.php";
+require './components/functions.php';
 if (isset($_SESSION['userid'])) {
  ?>
 <!DOCTYPE html>
@@ -72,92 +73,94 @@ if (isset($_SESSION['userid'])) {
   </ul>
 </div>
 </nav>
+<?php
+if (isset($_GET['get_details'])) {
+  $id = $_GET['get_details'];
 
+  $query = mysqli_query($conn, "SELECT * FROM boardinghouse INNER JOIN users ON boardinghouse.Landloard_id = users.user_id WHERE bh_id = '$id'");
+  $row = mysqli_fetch_array($query);
+  $_SESSION['landlord_id'] = $row['Landloard_id'];
+
+  /*echo $_SESSION['landlord_id'];*/
+
+}
+?>
 <div class="col-md-12 mt-3">
 <div class="container card py-3 shadow" style="border-top: 3px solid #6777ef;">
   <div class="row">
     <div class="col-md-4">
-      <img src="img/avatar/bg.jpg" class="col-md-12" width="" height="230px">
+      <img src="./img/houses/<?php echo $row['bh_photo'];?>" class="col-md-12" width="" height="230px">
     </div>
     <div class="col-md-8">
-      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Green Gate</h6>
+      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName"><?php echo $row['name'];?></h6>
     <div class="col-md-12 py-2">
-     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">600</span>/Bed space</span>
+     <i class="fa fa-location"></i> Location <span class="float-right"><?php echo $row['location'];?></span>
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-bed"></i> Available Rooms <span class="float-right">1/3</span>
+      <i class="fa fa-location-arrow"></i> Street <span class="float-right"><?php echo $row['Road'];?></span>
     </div>
-     <div class="col-md-12 py-2">
+     <!-- <div class="col-md-12 py-2">
       <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">3 Reviews</span>
+    </div> -->
+    <div class="col-md-12 py-2">
+      <?php
+      $query1 = mysqli_query($conn, "SELECT * FROM `reservation` WHERE Landloard_id = '$row[Landloard_id]'");
+      $tenants_num = mysqli_num_rows($query1);
+      ?>
+      <i class="fa fa-users"></i> Current occupants<span class="float-right"><?php echo $tenants_num;?></span>
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-users"></i> Number of students<span class="float-right">15</span>
+      <i class="fa fa-user-circle"></i> Landlord's name<span class="float-right"><?php echo $row['fname']." ".$row['lname'];?></span>
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-user-circle"></i> Landlord's name<span class="float-right">Mr Mwango Chisanga</span>
+      <i class="fa fa-phone"></i> Contact Number<span class="float-right"><?php echo $row['phone'];?></span>
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-phone"></i> Contact Number<span class="float-right">0966367116 / 0979023093</span>
-    </div>
-    <div class="col-md-12 py-2">
-      <i class="fa fa-dollar"></i> Payment Method<span class="float-right">Mobile Money</span>
+      <i class="fa fa-dollar"></i>Rental <span class="float-right">Monthly</span>
     </div>
     </div>
-
+<!-- <button class="btn btn-primary" onclick="testAlert()">Click</button> -->
   </div>
 </div>
 <div class="py-2 text-center pt-5">
   <h4 class="text-muted text-uppercase text-underline">The available rooms</h4>
 </div>
 
-<!-- The second part -->
-<div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
-  <div class="row">
-    <div class="col-md-2">
-      <img src="img/avatar/bg.jpg" class="col-md-12" >
+<?php
+$bh_id = $row['bh_id'];
+echo BhHouseRooms($bh_id);
+?>
     </div>
-    <div class="col-md-6">
-      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Room Number 10</h6>
-    <div class="col-md-12 py-2">
-     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">500</span>/Bed space</span>
-    </div>
-    <div class="col-md-12 py-2">
-      <i class="fa fa-bed"></i> Available bed spaces <span class="float-right">1/3</span>
-    </div>
-    </div>
-    <div class="col-md-4">
-      <button class="col-md-7 my-2 text-uppercase btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-check"></i> Reserve space</button>
 
-       <button class="col-md-7 my-2 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-eye"></i> Room mates</button>
+    <!-- Room Members Modal -->
+  <div class="modal fade" id="roomMembersModal">
+    <div class="modal-dialog modal-dialog-centered mt-5">
+      <div class="modal-content bg-light">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h6 class="modal-title"></h6>
+          <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="col-md-12 text-center">
+            <h6 class="text-uppercase">The list of room members</h6>
+          </div>
+          <div id="roomMembers">
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+        
+      </div>
     </div>
   </div>
-</div>
-<!-- The end tof the second part -->
 
-<!-- Third part -->
-<div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
-  <div class="row">
-    <div class="col-md-2">
-      <img src="img/avatar/bg.jpg" class="col-md-12" >
-    </div>
-    <div class="col-md-6">
-      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName">Room number 12</h6>
-    <div class="col-md-12 py-2">
-     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">500</span>/Bed space</span>
-    </div>
-    <div class="col-md-12 py-2">
-      <i class="fa fa-bed"></i> Available bed spaces <span class="float-right">2/3</span>
-    </div>
-    </div>
-    <div class="col-md-4">
-       <button class="col-md-7 my-2 text-uppercase btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-check"></i> Reserve space</button>
-
-       <button class="col-md-7 my-2 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#searchModal" onclick="getDetails()"><i class="fa fa-eye"></i> Room mates</button>
-    </div>
-  </div>
-</div>
-<!-- The end of the third part -->
-    </div>
+  <!-- End of room members -->
 
 
 <!-- The Reservation Modal -->
@@ -167,42 +170,15 @@ if (isset($_SESSION['userid'])) {
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h6 class="modal-title"></h6>
+          <h6 class="modal-title text-uppercase">Notice</h6>
           <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
         </div>
         <!-- Modal body -->
-        <div class="modal-body" id="finishPayDisplay">
-          <div class="col-md-12 text-center">
-            <h6 class="text-uppercase">Pay to Make a Reservation</h6>
-          </div>
-          <div>
-            <h6 class="text-danger text-center">Please confirm if your Details are Correct</h6>
-            <label>Phone Number</label>
-            <input type="text" name="search" id="phone" placeholder="Enter your Phone number +2609... or +2607..." class="form-control rounded-0">
-            <label>Names</label>
-            <input type="text" name="username" value="Mwango Malauni" id="names" class="form-control">
-            <label>Price</label>
-            <input type="text" name="username" value="" id="priceDetails" class="form-control">
-            <label>Boarding house name</label>
-            <input type="text" name="bh" value="" id="bh" class="form-control">
-            <label>Room Number</label>
-            <select class="form-control">
-              <option>Select a Room Number</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-            <button class="btn btn-warning my-2" onclick="getDisplay()">Pay And Reserve</button>
-          </div>
-          <div class="col-md-12 py-3" id="search_load">
-           Data entered here won't be shared with anyone<span class="text-danger">*</span> 
+        <div class="modal-body">
+          <!-- <div class="col-md-12 text-center">
+            <h6 class="text-uppercase">The list of room members</h6>
+          </div> -->
+          <div id="finishPayDisplay">
           </div>
         </div>
         
@@ -227,7 +203,38 @@ if (isset($_SESSION['userid'])) {
     <script src="js/geoMap.js"></script>
     <script src="js/javascript.js"></script>
     <script>
+  function getRoomMembers(roomId) {
+  
+    let xhttp;
 
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('roomMembers').innerHTML = this.responseText;
+    } 
+    };
+
+    xhttp.open("GET","./components/roomMembers.php?roomId="+roomId, true);
+    xhttp.send();
+  }
+
+
+
+  function reserveRoom(roomId) {
+  
+    let xhttp;
+
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('finishPayDisplay').innerHTML = this.responseText;
+    } 
+    };
+
+    xhttp.open("GET","./components/reserveRoom.php?roomId="+roomId, true);
+    xhttp.send();
+  }
+    
     </script>
   </body>
 </html>
