@@ -35,6 +35,8 @@ if (isset($_POST['login'])) {
 				$_SESSION['fname'] = $row['fname'];
 				$_SESSION['lname'] = $row['lname'];
 				$_SESSION['role'] = $row['role'];
+				$_SESSION['email'] = $row['email'];
+				$_SESSION['phone'] = $row['phone'];
 
 				if ($_SESSION['role'] == "Student") {
 					header("location: ../index.php?");

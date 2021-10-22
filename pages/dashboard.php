@@ -1,38 +1,17 @@
 <div class="col-md-12 mt-3">
 <div class="container card py-3 shadow" >
   <div class="row">
-    <div class="col-md-4" id="profilePicture">
-     <img src="img/other/200.gif" width="100%" height="auto" id="loader">
-    </div>
-    <div class="col-md-8" id="EditDetails">
-      <h6 class="col-md-12 text-center" id="editMsg"></h6>
-      <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName"><?php echo $_SESSION['fname']." ".$_SESSION['lname']." ";?></h6>
-    <!-- <div class="col-md-12 py-2" id="detailsLord">
-     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">600</span>/Bed space</span>
-    </div> -->
-    <div class="col-md-12 py-2" id="detailsLord">
-      <i class="fa fa-bed"></i> Available Rooms <span class="float-right">1/3</span>
-    </div>
-     <div class="col-md-12 py-2" id="detailsLord">
-      <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">3 Reviews</span>
-    </div>
-    <div class="col-md-12 py-2">
-      <i class="fa fa-users"></i> Number of students<span class="float-right" >15</span>
-    </div>
-    <div class="col-md-12 py-2">
-      <i class="fa fa-user-circle"></i> Landlord's name<span class="float-right">Mr Mwango Chisanga</span>
-    </div>
-    <div class="col-md-12 py-2">
-      <i class="fa fa-phone"></i> Contact Number<span class="float-right">0966367116 / 0979023093</span>
-    </div>
-    <div class="col-md-12 py-2">
-      <i class="fa fa-dollar"></i> Payment Method<span class="float-right">Mobile Money</span>
+    <div class="container">
+      <div class="row">
+      <h5 class="mx-4 text-uppercase col-md-6" style="font-weight: bold;">You are logedin as a landlord</h5>
+      <div class="nav-item">
+    <a class="nav-link text-muted" href="./landlord_acc.php?pages=profiles"><?php echo $_SESSION['fname']." ".$_SESSION['lname']." ";?><?php echo getMainImage();?></a></div>
     </div>
     </div>
      <div class="container border-top mt-3">
       <div class="row">
       <div class="col-md-6">
-      <button class="btn btn-success mx-1 my-2" onclick="EditDetailsLandlord()">Add a Room <i class="fa fa-plus-circle"></i></button>
+      <button class="btn btn-danger mx-1 my-2" onclick="EditDetailsLandlord()">Account Settings <i class="fa fa-cogs"></i></button>
       <button class="btn btn-primary mx-1 my-2" data-toggle="modal" data-target="#AddRoomModal">Add a Room <i class="fa fa-plus-circle"></i></button>
      
       </div>
@@ -43,15 +22,13 @@
 <script>
   "use strict";
   function EditDetailsLandlord() {
-    document.getElementById('EditDetails').style.border = "1px solid black";
-    document.getElementById('editMsg').innerHTML = "Click on each word to edit";
-    var edit = document.getElementById('EditDetails').contentEditable = "true";
+    window.location.assign("http://localhost/Student-Boarding-House-Locator/landlord_acc.php?pages=profiles");
   }
 
 
 </script>
-<div class="py-4 text-center mt-5 bg-white shadow">
-  <h4 class="text-muted text-uppercase text-underline">The available rooms</h4>
+<div class="py-4 mt-5 bg-white shadow">
+  <h4 class="text-uppercase mx-4">All the rooms</h4>
 </div>
 
 <?php
@@ -62,7 +39,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
     <!-- Room Members Modal -->
   <div class="modal fade" id="searchModal">
     <div class="modal-dialog modal-dialog-centered mt-5">
-      <div class="modal-content rounded-0 bg-light">
+      <div class="modal-content bg-light">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -74,40 +51,13 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
           <div class="col-md-12 text-center">
             <h6 class="text-uppercase">The list of room members</h6>
           </div>
-          <div>
-            <h6 class="text-danger text-center">Please confirm if your Details are Correct</h6>
-            <label>Phone Number</label>
-            <input type="text" name="search" id="phone" placeholder="Enter your Phone number +2609... or +2607..." class="form-control rounded-0">
-            <label>Names</label>
-            <input type="text" name="username" value="Mwango Malauni" id="names" class="form-control">
-            <label>Price</label>
-            <input type="text" name="username" value="" id="priceDetails" class="form-control">
-            <label>Boarding house name</label>
-            <input type="text" name="bh" value="" id="bh" class="form-control">
-            <label>Room Number</label>
-            <select class="form-control">
-              <option>Select a Room Number</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-            <button class="btn btn-warning my-2" onclick="getDisplay()">Pay And Reserve</button>
-          </div>
-          <div class="col-md-12 py-3" id="search_load">
-           Data entered here won't be shared with anyone<span class="text-danger">*</span> 
+          <div id="roomMembers">
           </div>
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
         
       </div>
@@ -116,11 +66,44 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
 
   <!-- End of room members -->
 
+  <!--Delete Room Modal -->
+  <div class="modal fade" id="deleteModal">
+    <div class="modal-dialog modal-dialog-centered mt-5">
+      <div class="modal-content bg-light">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h6 class="modal-title text-danger"><i class="fa fa-warning"></i> Warning <i class="fa fa-exclamation"></i></h6>
+          <button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body" id="deleteRoomMsg">
+          <div>
+           <h6 class="mx-2"><i class="fa fa-warning mr-2"></i> Are you sure you want to delete this Room?</h6>
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="container">
+            <div class="row">
+              <button class="btn btn-primary mx-2" id="deleteRoomBtn" onclick="deleteRoom(this.value)">Yes</button>
+              <button type="button" class="btn btn-danger " data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- End of Delete room -->
+
 
   <!-- Edit Room modal Modal -->
   <div class="modal fade" id="editMemberModal">
     <div class="modal-dialog modal-dialog-centered mt-5">
-      <div class="modal-content rounded-0 bg-light">
+      <div class="modal-content bg-light">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -135,7 +118,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
           <div>
             <h6 class="text-danger text-center">Please confirm if your Details are Correct</h6>
             <label>Phone Number</label>
-            <input type="text" name="search" id="phone" placeholder="Enter your Phone number +2609... or +2607..." class="form-control rounded-0">
+            <input type="text" name="search" id="phone" placeholder="Enter your Phone number +2609... or +2607..." class="form-control">
             <label>Names</label>
             <input type="text" name="username" value="Mwango Malauni" id="names" class="form-control">
             <label>Price</label>
@@ -165,7 +148,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
         
       </div>
@@ -177,7 +160,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
   <!-- Add Room modal Modal -->
   <div class="modal fade" id="AddRoomModal">
     <div class="modal-dialog modal-dialog-centered mt-5">
-      <div class="modal-content rounded-0 bg-light">
+      <div class="modal-content bg-light">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -204,7 +187,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
                
             }else{
               while ($rowhouse = mysqli_fetch_array($getBoardingHouse)) {
-                echo "<option>".$rowhouse['bh_id']."</option>";
+                echo "<option>".$rowhouse['name']."</option>";
               }
              }
               ?>
@@ -248,7 +231,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
         
       </div>
@@ -264,7 +247,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
   <!-- Add Room modal Modal -->
   <div class="modal fade" id="AddRoomModal">
     <div class="modal-dialog modal-dialog-centered mt-5">
-      <div class="modal-content rounded-0 bg-light">
+      <div class="modal-content bg-light">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -278,7 +261,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
         
       </div>
@@ -322,4 +305,20 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
         $("#imageUploadForm").submit();
     });*/
 });
+
+
+  function getRoomMembers(roomId) {
+  
+    let xhttp;
+
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('roomMembers').innerHTML = this.responseText;
+    } 
+    };
+
+    xhttp.open("GET","./components/roomMembers.php?roomId="+roomId, true);
+    xhttp.send();
+  }
   </script>

@@ -4,31 +4,52 @@
     <div class="col-md-4" id="profilePicture">
      <img src="img/other/200.gif" width="100%" height="auto">
     </div>
-    <div class="col-md-8" id="EditDetails">
+   <div class="col-md-8" id="EditDetails">
       <h6 class="col-md-12 text-center" id="editMsg"></h6>
       <h6 class="col-md-12 text-uppercase py-2 text-primary display-5" id="bhName"><?php echo $_SESSION['fname']." ".$_SESSION['lname']." ";?></h6>
-    <div class="col-md-12 py-2" id="detailsLord">
-     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount"><?php echo getAmount(); ?></span>/Bed space</span>
-    </div>
-    <div class="col-md-12 py-2" id="detailsLord">
+    <!-- <div class="col-md-12 py-2" id="detailsLord">
+     <i class="fa fa-money"></i> Price <span class="float-right">K <span id="amount">600</span>/Bed space</span>
+    </div> -->
+    <!-- <div class="col-md-12 py-2" id="detailsLord">
       <i class="fa fa-bed"></i> Available Rooms <span class="float-right">1/3</span>
-    </div>
-     <div class="col-md-12 py-2" id="detailsLord">
-      <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span class="float-right">3 Reviews</span>
+    </div> -->
+    <div class="col-md-12 py-2">
+      <?php
+      $t_num = mysqli_query($conn ,"SELECT * FROM reservation WHERE Landloard_id = '$_SESSION[userid]' ");
+     if (mysqli_num_rows($t_num) == 0) {
+        echo '<i class="fa fa-users"></i> Number of Tenants<span class="float-right" > No Tenants</span>';
+     }else{
+       echo '<i class="fa fa-users"></i> Number of Tenants<span class="float-right" >'.mysqli_num_rows($t_num).'</span>';
+     }
+      ?>
+      
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-users"></i> Number of students<span class="float-right" >15</span>
+      <i class="fa fa-user-circle"></i> Landlord's name<span class="float-right"><?php echo $_SESSION['fname']." ".$_SESSION['lname']." ";?></span>
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-user-circle"></i> Landlord's name<span class="float-right">Mr Mwango Chisanga</span>
+      <i class="fa fa-phone"></i> Contact Number<span class="float-right"><a href="tel:<?php echo $_SESSION['phone'];?>"><?php echo $_SESSION['phone'];?></a></span>
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-phone"></i> Contact Number<span class="float-right">0966367116 / 0979023093</span>
+      <i class="fa fa-envelope"></i> Email <span class="float-right"><a href="mailto:<?php echo $_SESSION['email'];?>"><?php echo $_SESSION['email'];?></a></span>
     </div>
     <div class="col-md-12 py-2">
-      <i class="fa fa-dollar"></i> Payment Method<span class="float-right">Mobile Money</span>
+      <i class="fa fa-home"></i> My Boarding houses
+      <div class="row">
+        <?php
+        $bh_all = mysqli_query($conn, "SELECT * FROM `boardinghouse` WHERE Landloard_id = '$_SESSION[userid]'");
+        if (mysqli_num_rows($bh_all) == 0) {
+          echo "You are not having and Boarding House";
+        }else{
+          while ($row_b = mysqli_fetch_array($bh_all)) {
+            echo '<div class="col-md-12 my-2"><i class="fa fa-location-arrow"></i> '.$row_b['name'].'</div>';
+          }
+        }
+        ?>
+      </div>
     </div>
     </div>
+    <!-- <?php echo getAmount(); ?> -->
      <div class="container border-top mt-3">
       <div class="row">
       <div class="col-md-6">
@@ -127,5 +148,5 @@
 
   	setInterval(function() {
 		$('#profilePicture').load('./components/loadPicture.php');
-	},1500);
+	},1000);
   </script>
