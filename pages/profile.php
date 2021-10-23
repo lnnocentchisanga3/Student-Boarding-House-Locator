@@ -54,7 +54,7 @@
       <div class="row">
       <div class="col-md-6">
       <button class="btn btn-success mx-1 my-2" data-toggle="modal" data-target="#changePhotoModal">Change Photo <i class="fa fa-image"></i></button>
-      <button class="btn btn-primary mx-1 my-2" data-toggle="modal" data-target="#AddRoomModal">Edit Details <i class="fa fa-edit"></i></button>
+      <a class="btn btn-primary mx-1 my-2" href="./landlord_acc.php?pages=edit_person&edit=edit_profile_details.php?edit=<?php echo $_SESSION['userid'] ?>">Edit Details <i class="fa fa-edit"></i></a>
       </div>
       </div>
     </div>

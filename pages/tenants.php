@@ -98,6 +98,8 @@
 
     xhttp.open("GET","./components/approve.php?tenant="+t_id, true);
     xhttp.send();
+
+    loadPage();
   }
 
   function reject(t_id) {
@@ -112,6 +114,8 @@
 
     xhttp.open("GET","./components/reject.php?tenant="+t_id, true);
     xhttp.send();
+
+    loadPage();
   }
 
   function editHouseDetails(houseId) {
@@ -127,6 +131,7 @@
 
     xhttp.open("GET","./components/housedetails.php?houseId="+houseId, true);
     xhttp.send();
+
   }
 
   function searchTenants() {
@@ -149,5 +154,9 @@
       }
     }
   }
+}
+
+function loadPage() {
+  window.location.assign("http://localhost/Student-Boarding-House-Locator/landlord_acc.php?pages=tenants");
 }
 </script>

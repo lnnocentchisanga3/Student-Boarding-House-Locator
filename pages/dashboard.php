@@ -115,31 +115,8 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
           <div class="col-md-12 text-center">
             <h6 class="text-uppercase">Edit the room details</h6>
           </div>
-          <div>
-            <h6 class="text-danger text-center">Please confirm if your Details are Correct</h6>
-            <label>Phone Number</label>
-            <input type="text" name="search" id="phone" placeholder="Enter your Phone number +2609... or +2607..." class="form-control">
-            <label>Names</label>
-            <input type="text" name="username" value="Mwango Malauni" id="names" class="form-control">
-            <label>Price</label>
-            <input type="text" name="username" value="" id="priceDetails" class="form-control">
-            <label>Boarding house name</label>
-            <input type="text" name="bh" value="" id="bh" class="form-control">
-            <label>Room Number</label>
-            <select class="form-control">
-              <option>Select a Room Number</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-            <button class="btn btn-warning my-2" onclick="getDisplay()">Pay And Reserve</button>
+          <div id="editRoomDisplay">
+            
           </div>
           <div class="col-md-12 py-3" id="search_load">
            Data entered here won't be shared with anyone<span class="text-danger">*</span> 
@@ -319,6 +296,20 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
     };
 
     xhttp.open("GET","./components/roomMembers.php?roomId="+roomId, true);
+    xhttp.send();
+  }
+
+  function editRoomDisplay(roomId){
+    let xhttp;
+
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('editRoomDisplay').innerHTML = this.responseText;
+    } 
+    };
+
+    xhttp.open("GET","./components/edit_room_display.php?roomId="+roomId, true);
     xhttp.send();
   }
   </script>

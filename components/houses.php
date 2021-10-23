@@ -1,14 +1,15 @@
-<div class="container mb-3">
+<div class="container-fluid mb-3">
   <div class="row">
    
-   <div class="container-fluid mb-3 mt-5" style="">
-  <div class="row">
-<?php
-echo getMyBoardingHousesRoomsAll();
-?>
+   <div class="container mb-3 mt-5" style="">
+  <div class="row" id="allHouses">
 
+ </div>
+</div>
 
-
+<script>
+    $('#allHouses').load("./components/all_houses.php");
+</script>
 
 <!-- The Reservation Modal -->
   <div class="modal fade" id="searchModal">
@@ -64,9 +65,6 @@ echo getMyBoardingHousesRoomsAll();
       </div>
     </div>
   </div>
-
-  </div>
-</div>
 
   </div>
 <?php?>

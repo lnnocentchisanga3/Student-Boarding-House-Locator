@@ -125,6 +125,7 @@ function getMyBoardingHousesRooms($user_id)
   $Bhroom = mysqli_query($conn, "SELECT * FROM ((users INNER JOIN boardinghouse ON users.user_id = boardinghouse.Landloard_id) INNER JOIN room ON boardinghouse.bh_id = room.b_id) WHERE user_id = '$user_id'");
   
   while($bh_row = mysqli_fetch_array($Bhroom)){
+     /*$_SESSION['room_id'] = $bh_row['r_id'];*/
     if (mysqli_num_rows($Bhroom) == 0) {
      $bhRoom .= '
      <div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
@@ -152,7 +153,7 @@ function getMyBoardingHousesRooms($user_id)
                
                 </div>
                 <div class="col-md-4">
-                  <button class="col-md-7 my-1 text-uppercase btn btn-default text-white" style="background-color: #6777ef;" data-toggle="modal" data-target="#editMemberModal" onclick="getDetails()"><i class="fa fa-edit"></i> Edit Details</button>
+                  <button class="col-md-7 my-1 text-uppercase btn btn-default text-white" style="background-color: #6777ef;" value="'.$bh_row['r_id'].'" data-toggle="modal" data-target="#editMemberModal" onclick="editRoomDisplay(this.value)"><i class="fa fa-edit"></i> Edit Details</button>
 
                    <button class="col-md-7 my-1 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#searchModal" value="'.$bh_row['r_id'].'" onclick="getRoomMembers(this.value)"><i class="fa fa-users"></i> Room Members</button>
 
@@ -205,8 +206,6 @@ function getMyBoardingHousesRoomsAll()
                 </div>
                 <div class="col-md-4">
                    <a href="./houseDetails.php?get_details='.$bh_row['bh_id'].'" class="col-md-7 my-2 text-uppercase btn btn-default text-white" style="background-color: #6777ef;">Details</a>
-
-                     <a class="col-md-7 my-2 text-uppercase btn btn-primary text-white" href="./houseDetails.php?get_details='.$bh_row['bh_id'].'">Make Reservation</a>
                 </div>
               </div>
             </div>';
@@ -236,9 +235,9 @@ function BhHouseRooms($bh_id)
      </div>';
    }else{
     $bhRoom .= '<!-- The second part -->
-<div class="container card py-3 my-4 shadow" style="border-top: 3px solid #6777ef;">
+<div class="col-md-5 card py-3 my-4 ml-5 mx-2 shadow" style="border-top: 3px solid #6777ef;">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <img src="img/rooms/'.$bh_row['room_image'].'" class="col-md-12" >
     </div>
     <div class="col-md-6">
@@ -250,10 +249,10 @@ function BhHouseRooms($bh_id)
       <i class="fa fa-bed"></i> Available bed spaces <span class="float-right">1/3</span>
     </div>
     </div>
-    <div class="col-md-4">
-      <button class="col-md-7 my-2 text-uppercase btn btn-default text-white" value="'.$bh_row['r_id'].'" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="reserveRoom(this.value)"><i class="fa fa-check"></i> Reserve space</button>
+    <div class="col-md-12 row">
+      <button class="col-md-5 my-2 ml-2 mx-1 text-uppercase btn btn-default text-white" value="'.$bh_row['r_id'].'" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="reserveRoom(this.value)"><i class="fa fa-check"></i> Reserve space</button>
 
-       <button class="col-md-7 my-2 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#roomMembersModal" value="'.$bh_row['r_id'].'" onclick="getRoomMembers(this.value)"><i class="fa fa-eye"></i> Room mates</button>
+       <button class="col-md-5 my-2 ml-5 mx-1 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#roomMembersModal" value="'.$bh_row['r_id'].'" onclick="getRoomMembers(this.value)"><i class="fa fa-users"></i> Room Members</button>
     </div>
   </div>
 </div>

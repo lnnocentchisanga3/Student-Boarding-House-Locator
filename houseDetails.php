@@ -2,6 +2,7 @@
 session_start();
 require "./config/config.php";
 require './components/functions.php';
+/*require './components/modals.php';*/
 if (isset($_SESSION['userid'])) {
  ?>
 <!DOCTYPE html>
@@ -38,14 +39,14 @@ if (isset($_SESSION['userid'])) {
       <!-- <div class="col-md-2"></div> -->
      <div class="col-md-6">
       <ul class="nav offset-md-5">
-        <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-envelope-o" style="color: #585b5f;"><sup> 2</sup></i></a></li>
-       <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-bell-o" style="color: #585b5f;"></i></a></li>
+        <!-- <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-envelope-o" style="color: #585b5f;"><sup> 2</sup></i></a></li>
+       <li class="nav-item"><a href="#" class= "nav-link "><i class="fa fa-bell-o" style="color: #585b5f;"></i></a></li> -->
 
       <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $_SESSION['fname']." ";?><i class="fa fa-user-circle" style="color: #585b5f;"></i></a>
+    <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" href="#"><?php echo $_SESSION['fname']." ".$_SESSION['lname']." ";?><i class="fa fa-user-circle" style="color: #585b5f;"></i></a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
-      <a class="dropdown-item" href="#"><i class="fa fa-cogs"></i> Settings</a>
+      <!-- <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a> -->
+      <a class="dropdown-item" href="./edit_and_student.php"><i class="fa fa-cogs"></i> Settings</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item btn btn-danger" href="./components/logout.php?action=logout"><i class="lnr lnr-exit"></i> Logout</a>
     </div>
@@ -66,7 +67,7 @@ if (isset($_SESSION['userid'])) {
 <div class="collapse navbar-collapse" id="menuButton">
   <ul class="navbar-nav mr-auto py-2 col-md-12">
     <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
-    <li class="nav-item"><a href="./landlords.php" class="nav-link"><i class="lnr lnr-users"></i> Landlords</a></li>
+    <!-- <li class="nav-item"><a href="./landlords.php" class="nav-link"><i class="lnr lnr-users"></i> Landlords</a></li> -->
     <li class="nav-item"><a href="./myroom.show.php" class="nav-link"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
     <li class="nav-item"><a href="#" class= "nav-link"><i class="lnr lnr-question-circle"></i></a></li>
     <li class="nav-item"><a href="#" class= "nav-link"><span ></span></a></li>
@@ -125,14 +126,19 @@ if (isset($_GET['get_details'])) {
 <div class="py-2 text-center pt-5">
   <h4 class="text-muted text-uppercase text-underline">The available rooms</h4>
 </div>
+ </div>
 
-<?php
-$bh_id = $row['bh_id'];
-echo BhHouseRooms($bh_id);
-?>
-    </div>
+ <div class="container mb-5">
+   <div class="row">
+     <?php
+      $bh_id = $row['bh_id'];
+      echo BhHouseRooms($bh_id);
+      ?>
+   
+   </div>
+ </div>
 
-    <!-- Room Members Modal -->
+  <!-- Room Members Modal -->
   <div class="modal fade" id="roomMembersModal">
     <div class="modal-dialog modal-dialog-centered mt-5">
       <div class="modal-content bg-light">
@@ -196,7 +202,6 @@ echo BhHouseRooms($bh_id);
     <h5 class="col-md-12 text-center py-2 text-uppercase">Payment is Done<br>Just wait for the Confirmation</h5>
   </div>
 
-
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
@@ -233,7 +238,13 @@ echo BhHouseRooms($bh_id);
 
     xhttp.open("GET","./components/reserveRoom.php?roomId="+roomId, true);
     xhttp.send();
+
+    /*loadPage(roomId);*/
   }
+
+  function loadPage(roomId) {
+  window.location.assign("http://localhost/Student-Boarding-House-Locator/myroom.show.php");
+}
     
     </script>
   </body>

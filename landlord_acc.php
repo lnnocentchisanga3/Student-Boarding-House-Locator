@@ -68,11 +68,11 @@ if (isset($_SESSION['userid'])) {
   <ul class="navbar-nav mr-auto"> 
     <li class="nav-item px-2 landActions"><a href="landlord_acc.php?pages=rooms" class="nav-link">Rooms <i class="fa fa-bed float-right ml-4"></i></a></li>
     <li class="nav-item px-2 landActions"><a href="landlord_acc.php?pages=tenants" class="nav-link">Tenants <i class="lnr lnr-users float-right ml-4"></i></a></li>
-    <li class="nav-item px-2 landActions "><a href="landlord_acc.php?pages=payments" class="nav-link">Payments <i class="fa fa-money float-right ml-4"></i></a></li>
+    <!-- <li class="nav-item px-2 landActions "><a href="landlord_acc.php?pages=payments" class="nav-link">Payments <i class="fa fa-money float-right ml-4"></i></a></li> -->
     <li class="nav-item px-2 landActions"><a href="landlord_acc.php?pages=boardinghouse" class="nav-link">Barding houses <i class="lnr lnr-home float-right ml-4"></i></a></li>
     <li class="nav-item px-2 landActions"><li class="nav-item px-2 landActions"><a class="nav-link" href="landlord_acc.php?pages=profiles">Settings <i class="lnr lnr-cog float-right ml-4"></i></a></li>
-    <li class="nav-item px-2 landActions"><li class="nav-item px-2 landActions"><a class="nav-link" href="landlord_acc.php?pages=profiles" >Messages <i class="lnr lnr-envelope float-right ml-4"></i></a></li>
-    <li class="nav-item px-2 landActions"><li class="nav-item px-2 landActions"><a class="nav-link" href="./components/logout.php?action=logout">Logout <i class="lnr lnr-exit float-right ml-4"></i></a></li></li>
+    <!-- <li class="nav-item px-2 landActions"><li class="nav-item px-2 landActions"><a class="nav-link" href="landlord_acc.php?pages=profiles" >Messages <i class="lnr lnr-envelope float-right ml-4"></i></a></li> -->
+    <li class="nav-item px-2 landActions"><a class="nav-link" href="./components/logout.php?action=logout">Logout <i class="lnr lnr-exit float-right ml-4"></i></a></li>
   </ul>
 </div>
 </nav>
@@ -159,6 +159,8 @@ function deleteRoom(roomId) {
         include_once './pages/dashboard.php';
      }elseif ($pages == "profiles") {
         include_once './pages/profile.php';
+     }elseif ($pages == "edit_person") {
+        include_once './pages/edit_person.php';
      }else{
       include_once './pages/404.php';
      }

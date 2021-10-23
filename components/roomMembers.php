@@ -3,7 +3,7 @@
 session_start();
 $id = $_GET['roomId'];
 
-$query = mysqli_query($conn, "SELECT * FROM `reservation` JOIN users ON reservation.s_id = users.user_id  WHERE reservation.room_id = '$id' AND reservation.status = 'approved' ");
+$query = mysqli_query($conn, "SELECT * FROM `reservation` JOIN users ON reservation.s_id = users.user_id  WHERE room_id = '$id' AND reservation.status = 'approved' ");
 
 
 if (mysqli_num_rows($query) == 0) {
