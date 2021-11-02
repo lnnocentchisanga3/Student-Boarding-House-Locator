@@ -1,3 +1,30 @@
+<?php
+require "./config/config.php";
+$msgDis = "";
+
+if (isset($_GET['echo'])) {
+  if ($_GET['echo'] == "PLZLoginBoss") {
+    $msgDis .= '<div class="bg-danger text-white py-2 text-center">Please Enter the email to continue</div>';
+  }else{
+    
+  }
+}
+
+if (isset($_POST['send'])) {
+  
+  $sql = "SELECT * FROM users WHERE email ='$_POST[email]' ";
+  $query = mysqli_query($conn, $sql);
+  $num = mysqli_num_rows($query);
+  if ( $num == null){
+    $msgDis .= '<div class="bg-danger text-white py-2 text-center">Sorry you are not registered</div>';
+  }else{
+    header('location: ./auth-reset-password.php?email='.$_POST['email'].'');
+
+  }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,15 +57,16 @@
               <div class="card-header">
                 <h4>Forgot Password</h4>
               </div>
+              <?php echo $msgDis; ?>
               <div class="card-body">
-                <p class="text-muted">We will send a link to reset your password</p>
-                <form method="POST">
+                <p class="text-muted">We will redirect you to a reset password page</p>
+                <form method="POST" action="">
                   <div class="form-group">
                     <label for="email"><i class="lnr lnr-envelope"></i> Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                    <button type="submit" name="send" class="btn btn-primary btn-lg btn-block" tabindex="4">
                       Forgot Password
                     </button>
                   </div>

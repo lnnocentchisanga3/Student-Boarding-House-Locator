@@ -1,3 +1,9 @@
+<?php
+$email ="";
+if (isset($_GET['email'])) {
+  $email .= $_GET['email'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +63,8 @@
                   <div class="form-group">
                     <label for="email"><i class="lnr lnr-envelope"></i> Email</label>
                     <input id="email" type="email" name="email" placeholder="Email" class="form-control"  tabindex="1" required autofocus>
+                      <?php echo $email; ?>
+                    </input>
                     <div class="invalid-feedback">
                       Please fill in your email
                     </div>

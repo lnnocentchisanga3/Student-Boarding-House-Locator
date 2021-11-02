@@ -1,8 +1,29 @@
+<?php
+require "./config/config.php";
+$msgDis = "";
+
+if (isset($_GET['email'])) {
+  
+  if (isset($_POST['reset'])) {
+
+  $pwd = md5($_POST['confirm-password']);
+  $sql = "UPDATE users SET pwd='$pwd' WHERE email='$_POST[email]'";
+  $query = mysqli_query($conn, $sql);
+  /*$num = mysqli_num_rows($query);*/
+  if (!$query){
+    $msgDis .= '<div class="bg-danger text-white py-2 text-center">Opps an error occoured please try again</div>';
+  }else{
+    header('location: ./auth-login.php?email='.$_POST[email].'');
+
+  }
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 
-<!-- auth-reset-password.html  21 Nov 2019 04:05:02 GMT -->
+<!-- auth-reset-password.html   -->
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -30,17 +51,18 @@
               <div class="card-header">
                 <h4>Reset Password</h4>
               </div>
+              <div id="msgDisplay"></div>
               <div class="card-body">
                 <p class="text-muted">Enter Your New Password</p>
-                <form method="POST">
+                <form method="POST" action="">
                   <div class="form-group">
                     <label for="email"><i class="lnr lnr-envelope"></i> Email</label>
-                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                    <input id="email" type="email" class="form-control" name="email" value="<?php echo $_GET['email']; ?>" tabindex="1" readonly>
                   </div>
                   <div class="form-group">
                     <label for="password"><i class="lnr lnr-lock"></i> New Password</label>
-                    <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator"
-                      name="password" tabindex="2" required>
+                    <input id="password" type="password" name="password" class="form-control pwstrength" data-indicator="pwindicator"
+                      name="password" tabindex="2" required autofocus>
                     <div id="pwindicator" class="pwindicator">
                       <div class="bar"></div>
                       <div class="label"></div>
@@ -48,11 +70,11 @@
                   </div>
                   <div class="form-group">
                     <label for="password-confirm"><i class="lnr lnr-lock"></i> Confirm Password</label>
-                    <input id="password-confirm" type="password" class="form-control" name="confirm-password"
+                    <input id="password-confirm" onkeyup="comparePassword(this.value)" type="password" class="form-control" name="confirm-password"
                       tabindex="2" required>
                   </div>
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                    <button type="submit" name="reset" class="btn btn-primary btn-lg btn-block" tabindex="4">
                       Reset Password
                     </button>
                   </div>
@@ -75,5 +97,27 @@
   <script src="admin/assets/js/scripts.js"></script>
   <!-- Custom JS File -->
   <script src="admin/assets/js/custom.js"></script>
+
+  <script type="text/javascript">
+    function comparePassword(password){
+      let pwd = document.getElementById('password');
+      let display = document.getElementById('msgDisplay');
+
+      if (password == null || password == ""){
+        display.innerHTML = '<div class="bg-danger text-white py-2 text-center col-md-12">Please make sure you enter the same password</div>';
+      }else if (password != pwd.value){
+        display.innerHTML = '<div class="bg-danger text-white py-2 text-center col-md-12">The passwords are not the same</div>';
+      }else{
+        display.innerHTML = '<div class="bg-success text-white py-2 text-center col-md-12">The passwords have matched </div>';
+      }
+    }
+  </script>
 </body>
 </html>
+<?php
+  }
+  else
+  {
+header("location: ./auth-forgot-password.php?echo=PLZLoginBoss");
+  }
+?>
