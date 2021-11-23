@@ -6,7 +6,7 @@ if (isset($_GET['action'])) {
 		session_destroy();
 		header("location: ../auth-login.php");
 	}else{
-		header("location: ./index.html");
+		header("location: ./index.php");
 	}
 }
 

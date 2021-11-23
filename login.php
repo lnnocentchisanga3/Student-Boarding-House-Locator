@@ -83,7 +83,6 @@
                     <input id="email"  name="phone" type="text" class="form-control" required>
                     <div class="invalid-feedback">
                     </div>
-
                     <div class="form-group my-2">
                     <label for="email">Register as</label>
                     <select class="form-control " required name="role">
