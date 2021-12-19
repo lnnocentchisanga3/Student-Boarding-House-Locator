@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "student_boarding_house_locator";
+$database = "boarding_house_locator";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password,$database);

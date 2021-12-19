@@ -4,7 +4,7 @@ $land_d = $_SESSION['userid'];
 $date = date("d/m/Y");
 require "../config/config.php";
 
-$bhname = mysqli_real_escape_string($conn, $_POST['bhnum']);
+$bhnum = mysqli_real_escape_string($conn, $_POST['bhnum']);
 $roomnum = mysqli_real_escape_string($conn, $_POST['roomnum']);
 $amount = mysqli_real_escape_string($conn, $_POST['amount']);
 $cap = mysqli_real_escape_string($conn, $_POST['capacity']);
@@ -18,8 +18,10 @@ if (!$query) {
 }else{
 	if (move_uploaded_file($tmp, '../img/rooms/'.$photo)) {
 		echo "<i class='text-success'>Room has been added</i>";
+		
 	}else{
 		echo "<i class='text-danger'>Error"." ".mysqli_error($conn)."</i>";
 	}
 }
+
 ?>

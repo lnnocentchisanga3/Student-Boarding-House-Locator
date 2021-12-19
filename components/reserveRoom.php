@@ -16,6 +16,7 @@ $get_details = mysqli_fetch_array($checkBook);
 $status = $get_details['status'];
 
 
+
 if (mysqli_num_rows($checkBook) == 0) {
 
 	$checkuser = mysqli_query($conn, "SELECT * FROM `reservation` WHERE s_id = '$user_id'");

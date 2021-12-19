@@ -152,7 +152,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
           <div>
             <h6 class="text-danger text-center">Please confirm if the Details are Correct</h6>
             <form action="./components/add_room.php" name="addRoom" id="AddRoomForm" enctype="multipart/form-data" method="POST">
-            <label>Boarding house Number</label>
+            <label>Boarding house ID</label>
            <select class="form-control" name="bhnum">
              <option>Select the boarding house</option>
              <?php
@@ -164,7 +164,7 @@ echo getMyBoardingHousesRooms($_SESSION['userid']);
                
             }else{
               while ($rowhouse = mysqli_fetch_array($getBoardingHouse)) {
-                echo "<option>".$rowhouse['name']."</option>";
+                echo "<option>".$rowhouse['bh_id']."</option>";
               }
              }
               ?>

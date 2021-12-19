@@ -34,7 +34,10 @@ if (isset($_POST['register'])) {
 			}elseif ($role == " ") {
 				header("location: ../auth-login.php?");
 			}else{
-				$query_landlord = mysqli_query($conn, "INSERT INTO landloard(`L_name`,`F_name`) VALUES('$lname','$fname')");
+				$get_id = mysqli_query($conn, "SELECT * FROM users WHERE email='$email' ");
+
+				$get_query = mysqli_fetch_array($get_id);
+				$query_landlord = mysqli_query($conn, "INSERT INTO landloard(`user_id`,`L_name`,`F_name`) VALUES('$get_query[user_id]','$lname','$fname')");
 				if ($query_landlord) {
 					header("location: ../auth-login.php?");
 				}else{
