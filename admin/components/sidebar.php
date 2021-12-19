@@ -14,8 +14,8 @@
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
                   data-feather="user"></i><span>Users</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="widget-chart.html">View students</a></li>
-                <li><a class="nav-link" href="widget-data.html">View landlords</a></li>
+                <li><a class="nav-link" href="students.php">View students</a></li>
+                <li><a class="nav-link" href="landlord.php">View landlords</a></li>
               </ul>
             </li>
 

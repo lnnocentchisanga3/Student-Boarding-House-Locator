@@ -9,6 +9,6 @@ session_start();
 }*/
 
 if(!$_SESSION['userid']){
-    header("location:http://".$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF'])."/login.php?action=loginagain");
+    header("location: ../auth-login.php?action=loginagain");
 }
 ?>
