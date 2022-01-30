@@ -25,7 +25,8 @@ if (mysqli_num_rows($checkBook) == 0) {
  		$query = mysqli_query($conn, "INSERT INTO reservation(s_id,Landloard_id,`date`,room_id,amount,status) VALUES('$user_id','$land_d','$date','$roomid','$amount','pending')");
 
  	if ($query) {
- 		echo "Room has been reserved, Please wait for the approval";
+ 		echo '<img src="img/other/paydone.gif" class="col-md-12" width="100%">
+    <h5 class="col-md-12 text-center py-2 text-uppercase">Payment is Done<br>Just wait for the Confirmation</h5>';
  	}else{
  		echo "Error".mysqli_error($conn);
  	}

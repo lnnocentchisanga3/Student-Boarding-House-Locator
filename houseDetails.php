@@ -185,6 +185,18 @@ if (isset($_GET['get_details'])) {
             <h6 class="text-uppercase">The list of room members</h6>
           </div> -->
           <div id="finishPayDisplay">
+            <h4 class="my-3">Make the payment before reserving a room</h4>
+            <label>Room Number</label>
+            <input type="text" name="roomId" class="form-control" id="roomIdDet" readonly>
+            <label>Amount</label>
+            <select class="form-control" id="amount">
+              <option>K 500</option>
+              <option>K 1000</option>
+              <option>K 1500</option>
+            </select>
+            <small>K500 for 1 month, K1000 for 2 months, k1500 for 3 months</small><br>
+
+            <button class="col-md-5 my-2 ml-2 mx-1 text-uppercase btn btn-default text-white" style="background-color: #6777ef;" onclick="reserveRoom()">Make the payment</button>
           </div>
         </div>
         
@@ -197,9 +209,16 @@ if (isset($_GET['get_details'])) {
     </div>
   </div>
 
+  <script>
+    function getRoomId(id){
+      document.getElementById('roomIdDet').value = id;
+      return true;
+      // body...
+    }
+  </script>
+
   <div id="paraTest" class="text-center" style="display: none;">
-    <img src="img/other/paydone.gif" class="col-md-12" width="">
-    <h5 class="col-md-12 text-center py-2 text-uppercase">Payment is Done<br>Just wait for the Confirmation</h5>
+    
   </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -225,7 +244,10 @@ if (isset($_GET['get_details'])) {
 
 
 
-  function reserveRoom(roomId) {
+  function reserveRoom() {
+
+    let roomId = document.getElementById("roomIdDet").value;
+    let amount = document.getElementById("amount").value;
   
     let xhttp;
 
@@ -236,7 +258,7 @@ if (isset($_GET['get_details'])) {
     } 
     };
 
-    xhttp.open("GET","./components/reserveRoom.php?roomId="+roomId, true);
+    xhttp.open("GET","./components/reserveRoom.php?roomId="+roomId+"&amoun="+amount, true);
     xhttp.send();
 
     /*loadPage(roomId);*/

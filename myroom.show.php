@@ -129,7 +129,7 @@ if (mysqli_num_rows($sql) == null) {
       <div class="col-md-12 py-2 mt-4 row justify-content-center">
       <button class="text-uppercase btn btn-warning mx-2 my-2" data-toggle="modal" data-target="#cancelReserve"><i class="fa fa-ban" value="<?php echo $room_img['r_id']; ?>" onclick="cancelReserve(this.value)"></i> Cancel a Reservation</button>
 
-      <button class="text-uppercase btn btn-default mx-2 my-2 text-white" data-toggle="modal" data-target="#roomMembersModal" style="background-color: #6777ef;" value="<?php echo $room_img['r_id']; ?>" onclick="getRoomMembers(this.value)"><i class="fa fa-users"></i> My Room mates</button>
+      <!-- <button class="text-uppercase btn btn-default mx-2 my-2 text-white" data-toggle="modal" data-target="#roomMembersModal" style="background-color: #6777ef;" value="<?php echo $room_img['r_id']; ?>" onclick="getRoomMembers(this.value)"><i class="fa fa-users"></i> My Room mates</button> -->
     </div>
   </div>
     </div>
@@ -206,7 +206,7 @@ function loadPage() {
     } 
     };
 
-    xhttp.open("GET","./components/cancelReserveRoom.php?roomId="+roomId, true);
+    xhttp.open("GET","components/cancelReserveRoom.php?roomId="+roomId, true);
     xhttp.send();
 
     loadPage();

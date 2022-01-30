@@ -250,9 +250,9 @@ function BhHouseRooms($bh_id)
     </div>
     </div>
     <div class="col-md-12 row">
-      <button class="col-md-5 my-2 ml-2 mx-1 text-uppercase btn btn-default text-white" value="'.$bh_row['r_id'].'" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="reserveRoom(this.value)"><i class="fa fa-check"></i> Reserve space</button>
+      <button class="col-md-5 my-2 ml-2 mx-1 text-uppercase btn btn-default text-white" value="'.$bh_row['r_id'].'" style="background-color: #6777ef;" data-toggle="modal" data-target="#searchModal" onclick="getRoomId(this.value)"><i class="fa fa-check"></i> Reserve space</button>
 
-       <button class="col-md-5 my-2 ml-5 mx-1 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#roomMembersModal" value="'.$bh_row['r_id'].'" onclick="getRoomMembers(this.value)"><i class="fa fa-users"></i> Room Members</button>
+       
     </div>
   </div>
 </div>

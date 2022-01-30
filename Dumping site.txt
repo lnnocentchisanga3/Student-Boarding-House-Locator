@@ -645,3 +645,7 @@ nav .second .dots span{
     </div>
   </div>
 </div> -->
+
+
+
+<button class="col-md-5 my-2 ml-5 mx-1 text-uppercase btn btn-primary text-white" data-toggle="modal" data-target="#roomMembersModal" value="'.$bh_row['r_id'].'" onclick="getRoomMembers(this.value)"><i class="fa fa-users"></i> Room Members</button>
