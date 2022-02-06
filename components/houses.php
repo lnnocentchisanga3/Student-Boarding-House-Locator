@@ -3,7 +3,6 @@
    
    <div class="container mb-3 mt-5" style="">
   <div class="row" id="allHouses">
-
  </div>
 </div>
 

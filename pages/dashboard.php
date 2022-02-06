@@ -3,7 +3,7 @@
   <div class="row">
     <div class="container">
       <div class="row">
-      <h5 class="mx-4 text-uppercase col-md-6" style="font-weight: bold;">You are logedin as a landlord</h5>
+      <h5 class="mx-4 text-uppercase col-md-6" style="font-weight: bold;">landlord's Dashboard</h5>
       <div class="nav-item">
     <a class="nav-link text-muted" href="./landlord_acc.php?pages=profiles"><?php echo $_SESSION['fname']." ".$_SESSION['lname']." ";?><?php echo getMainImage();?></a></div>
     </div>

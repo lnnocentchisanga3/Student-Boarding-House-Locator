@@ -10,6 +10,7 @@ $getAmount = mysqli_query($conn, "SELECT * FROM room WHERE r_id = '$roomid'");
 $row = mysqli_fetch_array($getAmount);
 
 $amount = $row['room_amount'];
+/*$amount = $_GET['amount'];*/
 
 $checkBook = mysqli_query($conn, "SELECT * FROM `reservation` WHERE s_id = '$user_id' AND Landloard_id = '$land_d'");
 $get_details = mysqli_fetch_array($checkBook);

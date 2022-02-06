@@ -16,9 +16,9 @@ $Bhroom = mysqli_query($conn, "SELECT * FROM users INNER JOIN boardinghouse ON u
     $s_number = mysqli_num_rows($num);
     $row = mysqli_fetch_array($num);
 
-    if (mysqli_num_rows($Bhroom) == null) {
+    if (mysqli_num_rows($Bhroom) == null || mysqli_num_rows($Bhroom) == 0) {
      echo '
-     <div class="col-md-12 card py-3 my-4 ml-5 mx-2 shadow" style="border-top: 3px solid #6777ef;">
+     <div class="col-md-12 card py-3 my-4 ml-5 mx-2 shadow " style="border-top: 3px solid #6777ef;">
         <div class="row">
      <h6 class="col-md-12 text-center">There are no results for your query 😕😒</h6>
      </div>

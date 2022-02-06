@@ -61,10 +61,13 @@ if (isset($_SESSION['userid'])) {
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuButton" aria-controls="menuButton" aria-expanded="false" aria-label="Toggle navigation">
   <span><i class="lnr lnr-menu"> Menu</i></span><i class=""></i>
 </button>
-
+<?php
+    $house_num = mysqli_query($conn, "SELECT * FROM boardinghouse");
+    $num_house = mysqli_num_rows($house_num);
+    ?>
 <div class="collapse navbar-collapse" id="menuButton">
   <ul class="navbar-nav mr-auto py-2 col-md-12">
-    <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
+    <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup><?php echo $num_house; ?></sup></a></li>
     <li class="nav-item"><a href="./myroom.show.php" class="nav-link"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
     <li class="nav-item"><a href="#" class= "nav-link"><i class="lnr lnr-question-circle"></i></a></li>
     <li class="nav-item"><a href="#" class= "nav-link"><span ></span></a></li>
@@ -155,8 +158,8 @@ if (mysqli_num_rows($sql) == null) {
         
         <div class="container my-3">
          <div class="row">
-            <button type="button" class="mx-2 btn btn-danger rounded-0"value="<?php echo $room_img['r_id']; ?>" id="yesCancel" onclick="cancelReserve(this.value)">Yes</button>
-          <button type="button" class="mx-2 btn btn-success rounded-0" data-dismiss="modal">No</button>
+            <button type="button" class="mx-2 btn btn-danger rounded"value="<?php echo $room_img['r_id']; ?>" id="yesCancel" onclick="cancelReserve(this.value)">Yes</button>
+          <button type="button" class="mx-2 btn btn-success rounded" data-dismiss="modal">No</button>
          </div>
         </div>
         

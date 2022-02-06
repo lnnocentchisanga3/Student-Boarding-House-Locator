@@ -63,10 +63,13 @@ if (isset($_SESSION['userid'])) {
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuButton" aria-controls="menuButton" aria-expanded="false" aria-label="Toggle navigation">
   <span><i class="lnr lnr-menu"> Menu</i></span><i class=""></i>
 </button>
-
+<?php
+    $house_num = mysqli_query($conn, "SELECT * FROM boardinghouse");
+    $num_house = mysqli_num_rows($house_num);
+?>
 <div class="collapse navbar-collapse" id="menuButton">
   <ul class="navbar-nav mr-auto py-2 col-md-12">
-    <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
+    <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup><?php echo $num_house; ?></sup></a></li>
     <!-- <li class="nav-item"><a href="./landlords.php" class="nav-link"><i class="lnr lnr-users"></i> Landlords</a></li> -->
     <li class="nav-item"><a href="./myroom.show.php" class="nav-link"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
     <li class="nav-item"><a href="#" class= "nav-link"><i class="lnr lnr-question-circle"></i></a></li>
@@ -190,9 +193,9 @@ if (isset($_GET['get_details'])) {
             <input type="text" name="roomId" class="form-control" id="roomIdDet" readonly>
             <label>Amount</label>
             <select class="form-control" id="amount">
-              <option>K 500</option>
-              <option>K 1000</option>
-              <option>K 1500</option>
+              <option value="500">500</option>
+              <option value="1000">1000</option>
+              <option value="1500">1500</option>
             </select>
             <small>K500 for 1 month, K1000 for 2 months, k1500 for 3 months</small><br>
 
@@ -258,7 +261,7 @@ if (isset($_GET['get_details'])) {
     } 
     };
 
-    xhttp.open("GET","./components/reserveRoom.php?roomId="+roomId+"&amoun="+amount, true);
+    xhttp.open("GET","./components/reserveRoom.php?roomId="+roomId+"&amount="+amount, true);
     xhttp.send();
 
     /*loadPage(roomId);*/

@@ -72,7 +72,11 @@ if (isset($_SESSION['userid'])) {
 
 <div class="collapse navbar-collapse" id="menuButton">
   <ul class="navbar-nav mr-auto py-2 col-md-12">
-    <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup>10</sup></a></li>
+    <?php
+    $house_num = mysqli_query($conn, "SELECT * FROM boardinghouse");
+    $num_house = mysqli_num_rows($house_num);
+    ?>
+    <li class="nav-item"><a href="./index.php" class="nav-link"><i class="fa fa-th-large"></i> Houses <sup><?php echo $num_house; ?></sup></a></li>
     <li class="nav-item"><a href="./myroom.show.php" class="nav-link"><i class="fa fa-bed"></i> My Room <sup><i class="fa fa-mark"></i></sup></a></li>
     <li class="nav-item"><a href="#" class= "nav-link"><i class="lnr lnr-question-circle"></i></a></li>
     <li class="nav-item"><a href="#" class= "nav-link"><span ></span></a></li>
@@ -80,12 +84,12 @@ if (isset($_SESSION['userid'])) {
 </div>
 <div class="col-md-8 input-group my-2">
   <!-- <h6>Search for the boarding house</h6> -->
-        <input type="text" name="street" placeholder="Street" autofocus class="form-control col-md-2 mx-1" onkeyup="getSearch(this.value)">
+        <!-- <input type="text" name="street" placeholder="Street" autofocus class="form-control col-md-2 mx-1" onkeyup="getSearch(this.value)"> -->
         <input type="text" name="name" placeholder="boarding house name" class="form-control col-md-3 mx-1" onkeyup="getSearch(this.value)">
 
       <input type="text" name="location" placeholder="location" class="form-control col-md-2 mx-1" onkeyup="getSearch(this.value)">
       <input type="number" name="bhnumber" placeholder="house number" class="form-control col-md-2 mx-1" onkeyup="getSearch(this.value)">
-      <button class="btn btn-default" style="background-color: #6777ef;"><i class="lnr lnr-magnifier px-2 text-white"></i></button>
+      <!-- <button class="btn btn-default" style="background-color: #6777ef;"><i class="lnr lnr-magnifier px-2 text-white"></i></button> -->
     </div>
 </nav>
 
