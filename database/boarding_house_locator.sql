@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 16, 2021 at 12:43 PM
+-- Generation Time: Feb 06, 2022 at 06:34 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -103,6 +103,7 @@ DROP TABLE IF EXISTS `payments`;
 CREATE TABLE IF NOT EXISTS `payments` (
   `payid` int(11) NOT NULL AUTO_INCREMENT,
   `student` varchar(255) NOT NULL,
+  `room_id` int(11) NOT NULL,
   `amount` varchar(10) NOT NULL,
   PRIMARY KEY (`payid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -120,17 +121,18 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `Landloard_id` int(11) NOT NULL,
   `date` varchar(20) NOT NULL,
   `room_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
+  `amount` varchar(11) NOT NULL,
   `status` varchar(11) NOT NULL,
   PRIMARY KEY (`r_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation`
 --
 
 INSERT INTO `reservation` (`r_id`, `s_id`, `Landloard_id`, `date`, `room_id`, `amount`, `status`) VALUES
-(6, 6, 5, '16/12/2021', 7, 500, 'pending');
+(6, 6, 5, '16/12/2021', 7, '500', 'pending'),
+(20, 1, 3, '01/02/2022', 6, '600', 'approved');
 
 -- --------------------------------------------------------
 
@@ -161,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   `room_capacity` int(11) NOT NULL,
   `room_image` varchar(255) NOT NULL,
   PRIMARY KEY (`r_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `room`
@@ -175,7 +177,8 @@ INSERT INTO `room` (`r_id`, `b_id`, `room_number`, `room_amount`, `room_capacity
 (7, 3, 1, '500', 3, 'FB_IMG_16396464219472316.jpg'),
 (8, 3, 2, '500', 4, 'FB_IMG_16396464178224897.jpg'),
 (9, 3, 3, '550', 3, 'FB_IMG_16396464053790196.jpg'),
-(10, 3, 4, '500', 3, 'FB_IMG_16396464116183095.jpg');
+(10, 3, 4, '500', 3, 'FB_IMG_16396464116183095.jpg'),
+(11, 2, 3, '450', 2, 'IMG-20210909-WA0012.jpg');
 
 -- --------------------------------------------------------
 
@@ -273,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `user_images` (
 INSERT INTO `user_images` (`img_id`, `user_id`, `image`, `date_added`) VALUES
 (1, 2, 'zictc.png', '16/12/2021'),
 (2, 5, 'IMG-20210810-WA0101.jpg', '16/12/2021'),
-(3, 3, 'IMG-20210810-WA0209.jpg', '16/12/2021');
+(3, 3, 'bg3.jpg', '30/12/2021');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
